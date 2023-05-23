@@ -1,0 +1,46 @@
+.mat-toolbar {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+#search {
+  /* border: none; */
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  width: 350px;
+  /* outline: none; */
+  padding-right: 30px;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-container {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.logo{
+  max-height: 100%; /* Set the maximum height of the image to 100% of the parent element (toolbar) */
+  max-width: 100%; /* Optionally, you can also set the maximum width to ensure the image doesn't overflow horizontally */
+  height: auto;
+}
+
+.sale{
+  
+  width: 95%;
+  max-height: 100%; 
+  max-width: 100%; 
+  height: 70%;
+}
+
+.sale-holder{
+  
+  width: 100%;
+  height: 70%;
+}
