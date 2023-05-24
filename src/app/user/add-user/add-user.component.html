@@ -1,0 +1,105 @@
+<div class="parent ">
+    <div class="card-1">
+        <div class="row p-3" style="margin-top: 50%; color: blue; font-size: larger;">
+            <h1><strong>Looks like you're new here!</strong></h1>
+            <span>Sign up with required details to get started</span>
+        </div>
+
+        <div class="row" style="margin-top: 20%;">
+            <img class="logo" src="assets/images/logo-1.jpg" alt="shopMart">
+        </div>
+    </div>
+
+    <div class="card-2">
+        <div class="p-3" style="align-self: flex-end;">
+            <button mat-icon-button mat-dialog-close aria-label="Close">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <form [formGroup]="addUserForm" (ngSubmit)="submitAddForm()">
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter your name</mat-label>
+                        <input matInput formControlName="personName">
+                        <mat-error *ngIf="personName.touched && personName.invalid">
+                            <span *ngIf="personName.errors?.['required']">Person name is required.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter your gender</mat-label>
+                        <mat-select formControlName="gender">
+                            <mat-option *ngFor="let option of genderOptions" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="gender.touched && gender.invalid">
+                            <span *ngIf="gender.errors?.['required']">Gender is required.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><mat-form-field>
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-error *ngIf="email.touched && email.invalid">
+                            <span *ngIf="email.errors?.['required']">Email is required.</span>
+                            <span *ngIf="email.errors?.['email']">Please enter a valid email address.</span>
+                        </mat-error>
+                    </mat-form-field></div>
+                <div class="col"><mat-form-field>
+                        <mat-label>Enter your phone number</mat-label>
+                        <input matInput formControlName="phoneNumber" maxlength="10">
+                        <mat-error *ngIf="phoneNumber.touched && phoneNumber.invalid">
+                            <span *ngIf="phoneNumber.errors?.['required']">Phone number is required.</span>
+                            <span *ngIf="phoneNumber.errors?.['pattern']">Please enter a valid phone number.</span>
+                        </mat-error>
+                    </mat-form-field></div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter new password</mat-label>
+                        <input matInput formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                        <mat-error *ngIf="password.touched && password.invalid">
+                    <span *ngIf="password.errors?.['required']">Password is required.</span>
+                    <span *ngIf="password.errors?.['pattern']">Password must be of 6 to 15 characters with one uppercase, one lowercase and one alphanumeric character.</span>
+                </mat-error>
+                    </mat-form-field>
+                    <div style="margin-top: 10px;">
+                        <label for="showPass" style="margin-right: 15px;">Show Password</label>
+                        <input type="checkbox" (click)="togglePasswordVisibility()" id="showPass">
+                      </div>
+                </div>
+                <div class="col"><mat-form-field>
+                        <mat-label>Confirm your password</mat-label>
+                        <input matInput formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'">
+                        <mat-error *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                    <span *ngIf="confirmPassword.errors?.['required']">Please, confirm your password.</span>
+                    <span *ngIf="addUserForm.errors?.['notSame']">Password and confirm password does not match.</span>
+                </mat-error>
+                    </mat-form-field></div>
+            </div>
+
+            <div class="buttons mt-3">
+                <div class="mt-2">
+                    <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">Continue</button>
+                </div>
+                <div class="mt-4">
+                    <button style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User?
+                        Login</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
