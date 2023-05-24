@@ -1,1 +1,94 @@
-<p>add-user works!</p>
+<div class="parent ">
+    <div class="card-1">
+        <div class="row p-3" style="margin-top: 50%; color: blue; font-size: larger;">
+            <h1><strong>Looks like you're new here!</strong></h1>
+            <span>Sign up with required details to get started</span>
+        </div>
+
+        <div class="row" style="margin-top: 20%;">
+            <img class="logo" src="assets/images/logo-1.jpg" alt="shopMart">
+        </div>
+    </div>
+
+    <div class="card-2">
+        <div class="p-3" style="align-self: flex-end;">
+            <button mat-icon-button mat-dialog-close aria-label="Close">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <div >
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter your name</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="emailInput.touched && emailInput.invalid">
+                        <span *ngIf="emailInput.errors?.['required']">Email is required.</span>
+                        <span *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</span>
+                    </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter your gender</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="passwordInput.touched && passwordInput.invalid">
+                        <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+                    </mat-error> -->
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><mat-form-field>
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="emailInput.touched && emailInput.invalid">
+                    <span *ngIf="emailInput.errors?.['required']">Email is required.</span>
+                    <span *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</span>
+                </mat-error> -->
+                    </mat-form-field></div>
+                <div class="col"><mat-form-field>
+                        <mat-label>Enter your phone number</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="passwordInput.touched && passwordInput.invalid">
+                    <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+                </mat-error> -->
+                    </mat-form-field></div>
+            </div>
+
+            <div class="row">
+                <div class="col"><mat-form-field>
+                        <mat-label>Enter new password</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="emailInput.touched && emailInput.invalid">
+                    <span *ngIf="emailInput.errors?.['required']">Email is required.</span>
+                    <span *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</span>
+                </mat-error> -->
+                    </mat-form-field></div>
+                <div class="col"><mat-form-field>
+                        <mat-label>Confirm your password</mat-label>
+                        <input matInput>
+                        <!-- <mat-error *ngIf="passwordInput.touched && passwordInput.invalid">
+                    <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
+                </mat-error> -->
+                    </mat-form-field></div>
+            </div>
+
+
+
+        </div>
+
+
+        
+
+        <div class="mt-2">
+            <button style="scale: 1.2;" mat-raised-button color="primary" (click)="SubmitAddForm()">Continue</button>
+        </div>
+        <div class="mt-4">
+            <button style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User? Login</button>
+        </div>
+    </div>
+</div>

@@ -21,14 +21,13 @@ export class HomePageComponent implements OnInit{
   }
 
   openDialog() {
-    //debugger
     const dialogRef = this.dialog.open(UserLoginComponent,
       {
         data: {  }
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      //this.getExamsList();
+      
     });
   }
 }
