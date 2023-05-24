@@ -28,6 +28,8 @@
   align-items: center;
 }
 
-/* mat-form-field {
-  width: 270px;
-} */
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

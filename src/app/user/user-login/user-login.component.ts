@@ -25,6 +25,8 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
+    // this.addUserForm.markAllAsTouched();
+    // if (this.addUserForm.valid) {
     this.userService.loginUser(this.userLogin).subscribe(
       (res)=>{
         if(res.isSuccess){
@@ -32,6 +34,7 @@ export class UserLoginComponent implements OnInit{
         }
       }
     )
+    //}
 
   }
 

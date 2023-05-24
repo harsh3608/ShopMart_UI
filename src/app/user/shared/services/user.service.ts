@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse, UserLogin } from '../models/user.models';
+import { AddUser, LoginResponse, UserLogin } from '../models/user.models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,5 +13,9 @@ export class UserService {
 
   loginUser(login:UserLogin): Observable<LoginResponse>{
     return this.http.post<LoginResponse>(this.userBaseServerLink+'login', login);
+  }
+
+  AddUserOrSeller(user:AddUser): Observable<LoginResponse>{
+    return this.http.post<LoginResponse>(this.userBaseServerLink+'register', user);
   }
 }
