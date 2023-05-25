@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserLoginComponent } from '../user-login/user-login.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { AddUser } from '../shared/models/user.models';
+import { AddUser, DialogData } from '../shared/models/user.models';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
 
@@ -26,6 +26,7 @@ export class AddUserComponent implements OnInit{
     private toastr: ToastrService,
     private userService: UserService,
     private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
   ngOnInit(): void {
@@ -40,23 +41,34 @@ export class AddUserComponent implements OnInit{
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,15}')
         ]),
       confirmPassword: new FormControl('', [Validators.required]),
-      userType: new FormControl(''),
+      userType: new FormControl(this.data.userRole),
     }, { validators: this.checkPasswords });
   }
 
   submitAddForm(){
     this.addUserForm.markAllAsTouched();
+    console.log(this.addUserForm.value)
     if (this.addUserForm.valid) {
       this.addUserRequest = this.addUserForm.value;
       this.userService.AddUserOrSeller(this.addUserRequest).subscribe({
         next: (res)=>{
-          if(res.isSuccess){
-            this.toastr.success('User Added Successfully!', 'Success!',{
-              timeOut: 2000,
-            });
-            //this.router.navigate(['/admin-menu']);
-          }else{
-            this.toastr.error('User Not Added!', 'Failure', {
+          if(res.isSuccess && res.statusCode == 200){
+            if(res.response.userType == 'Customer'){
+              this.toastr.success('Logged in Successfully!', 'Success!',{
+                timeOut: 2000,
+              });
+              this.dialogRef.close();
+              this.router.navigate(['/home'])
+            }
+            else if(res.response.userType == 'Seller'){
+              this.toastr.success('Seller Logged in Successfully!', 'Success!',{
+                timeOut: 2000,
+              });
+              this.dialogRef.close();
+              this.router.navigate(['/seller'])
+            }
+          } else if(!res.isSuccess){
+            this.toastr.error(res.message, 'Success!',{
               timeOut: 2000,
             });
           }

@@ -13,12 +13,14 @@ import {MatIconModule} from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 @NgModule({
   declarations: [
     UserLoginComponent,
     AddUserComponent,
-    AddSellerComponent
+    AddSellerComponent,
+    UserHomePageComponent
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,14 @@
 <div class="parent ">
     <div class="card-1">
         <div class="row p-3" style="margin-top: 50%; color: blue; font-size: larger;">
-            <h1><strong>Looks like you're new here!</strong></h1>
-            <span>Sign up with required details to get started</span>
+            <!-- Customer -->
+            <h1 *ngIf="data.userRole == 0"><strong>Looks like you're new here!</strong></h1>
+            <span *ngIf="data.userRole == 0">Sign up with required details to get started</span>
+
+            <!-- Seller -->
+            <h1 *ngIf="data.userRole == 1"><strong>Become a Seller</strong></h1>
+            <span *ngIf="data.userRole == 1">Sign up with required details and start selling on ShopMart</span>
+            
         </div>
 
         <div class="row" style="margin-top: 20%;">
@@ -68,23 +74,27 @@
                     <mat-form-field>
                         <mat-label>Enter new password</mat-label>
                         <input matInput formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                        <span style="scale: 1.3; padding-left: 4%; margin-top: 4%;" class="icon-container">
+                            <i class="fa fa-eye-slash" aria-hidden="true" [hidden]="!showPassword"
+                                (click)="togglePasswordVisibility()"></i>
+                            <i class="fa fa-eye" aria-hidden="true" [hidden]="showPassword"
+                                (click)="togglePasswordVisibility()"></i>
+                        </span>
                         <mat-error *ngIf="password.touched && password.invalid">
-                    <span *ngIf="password.errors?.['required']">Password is required.</span>
-                    <span *ngIf="password.errors?.['pattern']">Password must be of 6 to 15 characters with one uppercase, one lowercase and one alphanumeric character.</span>
-                </mat-error>
+                            <span *ngIf="password.errors?.['required']">Password is required.</span>
+                            <span *ngIf="password.errors?.['pattern']">Password must be of 6 to 15 characters with one
+                                uppercase, one lowercase and one alphanumeric character.</span>
+                        </mat-error>
                     </mat-form-field>
-                    <div style="margin-top: 10px;">
-                        <label for="showPass" style="margin-right: 15px;">Show Password</label>
-                        <input type="checkbox" (click)="togglePasswordVisibility()" id="showPass">
-                      </div>
                 </div>
                 <div class="col"><mat-form-field>
                         <mat-label>Confirm your password</mat-label>
                         <input matInput formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'">
                         <mat-error *ngIf="confirmPassword.touched && confirmPassword.invalid">
-                    <span *ngIf="confirmPassword.errors?.['required']">Please, confirm your password.</span>
-                    <span *ngIf="addUserForm.errors?.['notSame']">Password and confirm password does not match.</span>
-                </mat-error>
+                            <span *ngIf="confirmPassword.errors?.['required']">Please, confirm your password.</span>
+                            <span *ngIf="addUserForm.errors?.['notSame']">Password and confirm password does not
+                                match.</span>
+                        </mat-error>
                     </mat-form-field></div>
             </div>
 
@@ -93,7 +103,7 @@
                     <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">Continue</button>
                 </div>
                 <div class="mt-4">
-                    <button style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User?
+                    <button *ngIf="data.userRole == 0" style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User?
                         Login</button>
                 </div>
             </div>
