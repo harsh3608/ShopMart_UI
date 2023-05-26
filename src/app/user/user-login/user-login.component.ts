@@ -5,6 +5,7 @@ import { DialogData, UserLogin } from '../shared/models/user.models';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-login',
@@ -14,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class UserLoginComponent implements OnInit{
   userLogin!: UserLogin;
   public showPassword: boolean = false;
+  loginForm!: FormGroup;
 
   constructor(
     public dialog: MatDialog,
@@ -30,31 +32,38 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
-    this.userService.loginUser(this.userLogin).subscribe(
-      (res)=>{
-        if(res.isSuccess && res.statusCode == 200){
-          if(res.response.userType == 'Customer'){
-            this.toastr.success('Logged in Successfully!', 'Success!',{
+    //debugger
+    this.loginForm.markAllAsTouched();
+    if(this.loginForm.valid){
+      this.userService.loginUser(this.userLogin).subscribe(
+        (res)=>{
+          if(res.isSuccess && res.statusCode == 200){
+            if(res.response.userType == 'Customer'){
+              this.toastr.success('Logged in Successfully!', 'Success!',{
+                timeOut: 2000,
+              });
+              this.dialogRef.close();
+              this.router.navigate(['/home'])
+            }
+            else if(res.response.userType == 'Seller'){
+              this.toastr.success('Seller Logged in Successfully!', 'Success!',{
+                timeOut: 2000,
+              });
+              this.dialogRef.close();
+              this.router.navigate(['/seller'])
+            }
+          } else if(!res.isSuccess){
+            this.toastr.error(res.message, 'Success!',{
               timeOut: 2000,
             });
             this.dialogRef.close();
-            this.router.navigate(['/home'])
           }
-          else if(res.response.userType == 'Seller'){
-            this.toastr.success('Seller Logged in Successfully!', 'Success!',{
-              timeOut: 2000,
-            });
-            this.dialogRef.close();
-            this.router.navigate(['/seller'])
-          }
-        } else if(!res.isSuccess){
-          this.toastr.error(res.message, 'Success!',{
-            timeOut: 2000,
-          });
-          this.dialogRef.close();
         }
-      }
-    )
+      );
+    }
+      
+    
+    
 
   }
 

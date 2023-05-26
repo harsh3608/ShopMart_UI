@@ -47,7 +47,6 @@ export class AddUserComponent implements OnInit{
 
   submitAddForm(){
     this.addUserForm.markAllAsTouched();
-    console.log(this.addUserForm.value)
     if (this.addUserForm.valid) {
       this.addUserRequest = this.addUserForm.value;
       this.userService.AddUserOrSeller(this.addUserRequest).subscribe({
