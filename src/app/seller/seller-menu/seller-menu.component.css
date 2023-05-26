@@ -1,0 +1,27 @@
+.mat-toolbar {
+  background-color: rgb(70, 197, 247);
+  color: black;
+}
+
+.logo {
+  max-height: 100%; /* Set the maximum height of the image to 100% of the parent element (toolbar) */
+  max-width: 100%; /* Optionally, you can also set the maximum width to ensure the image doesn't overflow horizontally */
+  height: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 246px;
+  background-color: rgb(70, 197, 247);
+}
+
+mat-sidenav-container{
+    height: 100%;
+}
+
+.rotate {
+    transform: rotate(90deg);
+  }

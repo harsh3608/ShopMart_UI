@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
+import { AddUserComponent } from 'src/app/user/add-user/add-user.component';
 import { UserLoginComponent } from 'src/app/user/user-login/user-login.component';
 
 @Component({
@@ -27,7 +28,16 @@ export class HomePageComponent implements OnInit{
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      
+    });
+  }
+
+  OpenRegisterDialog(userType: number){
+    const dialogRef = this.dialog.open(AddUserComponent,
+      {
+        data: { userRole: userType }
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 }

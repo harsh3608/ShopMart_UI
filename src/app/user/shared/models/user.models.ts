@@ -29,3 +29,7 @@ export interface AddUser {
   confirmPassword: string
   userType: number
 }
+
+export interface DialogData{
+  userRole: number
+}
