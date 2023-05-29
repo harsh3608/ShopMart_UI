@@ -15,13 +15,14 @@
 
 mat-sidenav {
   width: 246px;
-  background-color: rgb(70, 197, 247);
+  background-color: rgb(49, 180, 231);
 }
 
-mat-sidenav-container{
-    height: 100%;
+mat-sidenav-container {
+  height: 100%;
+  width: 246px;
 }
 
 .rotate {
-    transform: rotate(90deg);
-  }
+  transform: rotate(90deg);
+}

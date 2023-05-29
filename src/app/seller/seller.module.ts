@@ -11,23 +11,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
-import { UserRoutingModule } from '../user/user-routing.module';
 import { SellerMenuComponent } from './seller-menu/seller-menu.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductsAddComponent } from './products/products-add/products-add.component';
 
 
 @NgModule({
   declarations: [
     SellerHomePageComponent,
-    SellerMenuComponent
+    SellerMenuComponent,
+    ProductsListComponent,
+    ProductsAddComponent
   ],
   imports: [
     CommonModule,
     SellerRoutingModule,
-    UserRoutingModule,
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
@@ -42,6 +44,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSidenavModule,
     MatListModule,
     MatMenuModule
-  ]
+  ],
 })
 export class SellerModule { }

@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SellerHomePageComponent } from './seller-home-page/seller-home-page.component';
 import { SellerMenuComponent } from './seller-menu/seller-menu.component';
+import { SellerHomePageComponent } from './seller-home-page/seller-home-page.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductsAddComponent } from './products/products-add/products-add.component';
 
-const routes: Routes = [{
+export const routes: Routes = [{
   path: 'seller',
-  component: SellerHomePageComponent
+  component: SellerMenuComponent
 },
 {
-  path: 'seller-menu',
-  component: SellerMenuComponent
+  path: 'seller-home',
+  component: SellerHomePageComponent,
+},
+{
+  path: 'products-list',
+  component: ProductsListComponent,
+},
+{
+  path: 'products-add',
+  component: ProductsAddComponent,
 }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class SellerRoutingModule { }

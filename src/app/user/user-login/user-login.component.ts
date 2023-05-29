@@ -5,7 +5,7 @@ import { DialogData, UserLogin } from '../shared/models/user.models';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-login',
@@ -29,10 +29,14 @@ export class UserLoginComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl(this.userLogin.email),
+      password: new FormControl(this.userLogin.password)
+    })
   }
 
   SubmitloginForm(){
-    //debugger
+    debugger
     this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.userService.loginUser(this.userLogin).subscribe(
