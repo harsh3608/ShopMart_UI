@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { SellerModule } from './seller/seller.module';
-import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { ProductsModule } from './products/products.module';
     BrowserAnimationsModule,
     HomeModule,
     UserModule,
-    SellerModule,
-    ProductsModule
+    SellerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
