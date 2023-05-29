@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
-import { UserRoutingModule } from '../user/user-routing.module';
 import { SellerMenuComponent } from './seller-menu/seller-menu.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -27,7 +26,6 @@ import { MatMenuModule } from '@angular/material/menu';
   imports: [
     CommonModule,
     SellerRoutingModule,
-    UserRoutingModule,
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
@@ -42,6 +40,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSidenavModule,
     MatListModule,
     MatMenuModule
-  ]
+  ],
 })
 export class SellerModule { }

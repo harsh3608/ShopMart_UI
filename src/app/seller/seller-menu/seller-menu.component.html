@@ -26,19 +26,22 @@
 <mat-sidenav-container [hasBackdrop]="false">
     <mat-sidenav #sidenav mode="side">
         <mat-nav-list>
+            <a mat-list-item routerLink="/seller-home">
+                <span class="material-icons">home</span>&nbsp;Home
+            </a>
             <a mat-list-item routerLink="/add-product">
                 <span class="material-icons">add_box</span>&nbsp;Add Product
             </a>
-
-            <a mat-list-item routerLink="/">
+            <!-- <a mat-list-item routerLink="/seller-home">
                 <span class="material-icons">list_alt</span>&nbsp;Orders
-            </a>
+            </a> -->
+            
             <!-- Add more navigation items here -->
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
 
-        <app-seller-home-page></app-seller-home-page>
+        <!-- <app-seller-home-page></app-seller-home-page> -->
 
     </mat-sidenav-content>
 </mat-sidenav-container>
