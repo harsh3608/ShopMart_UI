@@ -9,12 +9,23 @@
     <div class="spacer"></div>
 
     <button mat-button [matMenuTriggerFor]="menu"><span class="material-icons">
-        account_circle
+            account_circle
         </span></button>
     <!-- #enddocregion mat-menu-trigger-for -->
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>Change Password</button>
-        <button mat-menu-item>Log Out</button>
+        <button mat-menu-item>
+            <span class="material-icons">
+                sync_lock
+            </span>
+            &nbsp;Change Password
+        </button>
+
+        <button mat-menu-item>
+            <span class="material-icons">
+                logout
+            </span>
+            &nbsp;Log Out
+        </button>
     </mat-menu>
 
     &nbsp;&nbsp;
@@ -34,17 +45,18 @@
             </a>
             <a mat-list-item routerLink="/products-add">
                 <span class="material-icons">add_box</span>&nbsp;Add Products
-            </a> 
+            </a>
             <a mat-list-item routerLink="/seller-home">
                 <span class="material-icons">list_alt</span>&nbsp;Orders
             </a>
-            
+
             <!-- Add more navigation items here -->
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <!-- <mat-sidenav-content>
 
         <router-outlet></router-outlet>
 
-    </mat-sidenav-content>
+    </mat-sidenav-content> -->
+
 </mat-sidenav-container>
