@@ -1,17 +1,41 @@
 <mat-toolbar color="primary" class=" d-flex justify-content-center">
     &nbsp;
-    <button mat-icon-button (click)="toggleSidenav()">
-        <mat-icon [ngClass]="{'rotate': isSidenavOpen}">menu</mat-icon>
+    
+    <button mat-button [matMenuTriggerFor]="menu1">
+        <span class="material-icons">
+            menu
+        </span>
     </button>
+
+    <mat-menu #menu1="matMenu" class="rotepad">
+        <button class="router" mat-menu-item routerLink="/seller-home" >
+            <span class="material-icons">home</span>&nbsp;Home
+        </button>
+
+        <button class="router" mat-menu-item routerLink="/products-list" >
+            <span class="material-icons">inventory_2</span>&nbsp;Manage Products
+        </button>
+
+        <button class="router" mat-menu-item routerLink="/products-add" >
+            <span class="material-icons">add_box</span>&nbsp;Add Products
+        </button>
+
+        <button class="router" mat-menu-item routerLink="/seller-home" >
+            <span class="material-icons">list_alt</span>&nbsp;Orders
+        </button>
+    </mat-menu>
+
     &nbsp;
     <img class="logo" src="assets/images/logo-1.jpg" alt="shopMart">&nbsp;&nbsp;
 
     <div class="spacer"></div>
 
-    <button mat-button [matMenuTriggerFor]="menu"><span class="material-icons">
+    <button mat-button [matMenuTriggerFor]="menu">
+        <span class="material-icons">
             account_circle
-        </span></button>
-    <!-- #enddocregion mat-menu-trigger-for -->
+        </span>
+    </button>
+    
     <mat-menu #menu="matMenu">
         <button mat-menu-item>
             <span class="material-icons">
@@ -30,33 +54,4 @@
 
     &nbsp;&nbsp;
 
-
-
 </mat-toolbar>
-
-<mat-sidenav-container [hasBackdrop]="false">
-    <mat-sidenav #sidenav mode="side">
-        <mat-nav-list>
-            <a mat-list-item routerLink="/seller-home">
-                <span class="material-icons">home</span>&nbsp;Home
-            </a>
-            <a mat-list-item routerLink="/products-list">
-                <span class="material-icons">inventory_2</span>&nbsp;Manage Products
-            </a>
-            <a mat-list-item routerLink="/products-add">
-                <span class="material-icons">add_box</span>&nbsp;Add Products
-            </a>
-            <a mat-list-item routerLink="/seller-home">
-                <span class="material-icons">list_alt</span>&nbsp;Orders
-            </a>
-
-            <!-- Add more navigation items here -->
-        </mat-nav-list>
-    </mat-sidenav>
-    <!-- <mat-sidenav-content>
-
-        <router-outlet></router-outlet>
-
-    </mat-sidenav-content> -->
-
-</mat-sidenav-container>
