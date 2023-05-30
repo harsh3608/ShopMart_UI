@@ -39,3 +39,10 @@ mat-form-field {
   right: 10px;
   transform: translateY(-50%);
 }
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
