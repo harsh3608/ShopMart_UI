@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { SellerModule } from './seller/seller.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthConfigInterceptor } from './user/shared/authorization/interceptor/auth-config.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,13 @@ import { SellerModule } from './seller/seller.module';
     UserModule,
     SellerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthConfigInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

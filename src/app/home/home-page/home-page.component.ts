@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { AddUserComponent } from 'src/app/user/add-user/add-user.component';
+import { AuthService } from 'src/app/user/shared/authorization/auth.service';
 import { UserLoginComponent } from 'src/app/user/user-login/user-login.component';
 
 @Component({
@@ -12,13 +13,14 @@ import { UserLoginComponent } from 'src/app/user/user-login/user-login.component
 export class HomePageComponent implements OnInit{
   constructor(
     private title: Title,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ){
     this.title.setTitle('ShopMart')
   }
 
   ngOnInit(): void {
-    
+    this.authService.removeToken();
   }
 
   openDialog() {

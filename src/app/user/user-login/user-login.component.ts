@@ -38,7 +38,6 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
-    debugger
     this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.userService.loginUser(this.userLogin).subscribe(
@@ -59,7 +58,9 @@ export class UserLoginComponent implements OnInit{
                 timeOut: 2000,
               });
               this.dialogRef.close();
-              this.router.navigate(['/seller'])
+              this.router.navigate(['/seller']);
+              this.authService.getUserMail();
+              this.authService.getUserRole();
             }
           } else if(!res.isSuccess){
             this.toastr.error(res.message, 'Success!',{

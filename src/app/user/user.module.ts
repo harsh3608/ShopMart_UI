@@ -4,7 +4,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { UserRoutingModule } from './user-routing.module';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { AddSellerComponent } from './add-seller/add-seller.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -22,7 +21,6 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
   declarations: [
     UserLoginComponent,
     AddUserComponent,
-    AddSellerComponent,
     UserHomePageComponent,
     PasswordForgotComponent,
     PasswordResetComponent,

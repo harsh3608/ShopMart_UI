@@ -18,7 +18,6 @@ export class AuthService {
 
   setToken(token: string) {
     const eToken = AES.encrypt(token, this.secretKey).toString();
-
     localStorage.setItem("access_token", eToken);
   }
 
@@ -51,11 +50,12 @@ export class AuthService {
 
   isRequestAuthorized() {
     const token = this.getToken();
-    return this.jwtHelperService.isTokenExpired(token);
-    //const expirytime = this.jwtHelperService.getTokenExpirationDate(token) || '';
-    // if(expirytime > new Date){
-    //   return true;
-    // }
-    // return false
+    // console.log(this.jwtHelperService.isTokenExpired(token));
+    // return this.jwtHelperService.isTokenExpired(token);
+    const expirytime = this.jwtHelperService.getTokenExpirationDate(token) || '';
+    if(expirytime > new Date){
+      return true;
+    }
+    return false
   }
 }
