@@ -18,7 +18,6 @@ export class SellerMenuComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    
   }
 
   openChangePasswordDialog(){
@@ -27,6 +26,7 @@ export class SellerMenuComponent implements OnInit {
         data: {  }
       }
     );
+    dialogRef.addPanelClass('rounded-dialog-container');
     dialogRef.afterClosed().subscribe(result => {
     });
   }
