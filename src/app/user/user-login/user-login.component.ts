@@ -6,6 +6,7 @@ import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../shared/authorization/auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -24,6 +25,7 @@ export class UserLoginComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private toastr: ToastrService,
     private router: Router,
+    private authService: AuthService
   ) {
     this.userLogin = new UserLogin();
   }
@@ -36,13 +38,14 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
-    debugger
     this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.userService.loginUser(this.userLogin).subscribe(
         (res)=>{
           if(res.isSuccess && res.statusCode == 200){
             if(res.response.userType == 'Customer'){
+              this.authService.setToken(res.response.token);
+              //
               this.toastr.success('Logged in Successfully!', 'Success!',{
                 timeOut: 2000,
               });
@@ -50,11 +53,14 @@ export class UserLoginComponent implements OnInit{
               this.router.navigate(['/home'])
             }
             else if(res.response.userType == 'Seller'){
+              this.authService.setToken(res.response.token);
               this.toastr.success('Seller Logged in Successfully!', 'Success!',{
                 timeOut: 2000,
               });
               this.dialogRef.close();
-              this.router.navigate(['/seller'])
+              this.router.navigate(['/seller']);
+              this.authService.getUserMail();
+              this.authService.getUserRole();
             }
           } else if(!res.isSuccess){
             this.toastr.error(res.message, 'Success!',{

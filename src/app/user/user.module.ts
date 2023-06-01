@@ -4,7 +4,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { UserRoutingModule } from './user-routing.module';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { AddSellerComponent } from './add-seller/add-seller.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -14,13 +13,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 @NgModule({
   declarations: [
     UserLoginComponent,
     AddUserComponent,
-    AddSellerComponent,
-    UserHomePageComponent
+    UserHomePageComponent,
+    PasswordForgotComponent,
+    PasswordResetComponent,
+    PasswordChangeComponent,
   ],
   imports: [
     CommonModule,

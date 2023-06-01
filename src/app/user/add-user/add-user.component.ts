@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AddUser, DialogData } from '../shared/models/user.models';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/authorization/auth.service';
 
 @Component({
   selector: 'app-add-user',
@@ -27,6 +28,7 @@ export class AddUserComponent implements OnInit{
     private userService: UserService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class AddUserComponent implements OnInit{
         next: (res)=>{
           if(res.isSuccess && res.statusCode == 200){
             if(res.response.userType == 'Customer'){
+              this.authService.setToken(res.response.token);
               this.toastr.success('Logged in Successfully!', 'Success!',{
                 timeOut: 2000,
               });
@@ -60,6 +63,7 @@ export class AddUserComponent implements OnInit{
               this.router.navigate(['/home'])
             }
             else if(res.response.userType == 'Seller'){
+              this.authService.setToken(res.response.token);
               this.toastr.success('Seller Logged in Successfully!', 'Success!',{
                 timeOut: 2000,
               });

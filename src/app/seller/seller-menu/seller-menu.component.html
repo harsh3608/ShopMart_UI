@@ -28,6 +28,8 @@
     &nbsp;
     <img class="logo" src="assets/images/logo-1.jpg" alt="shopMart">&nbsp;&nbsp;
 
+    <h1 class="mt-2">Seller Portal</h1>
+
     <div class="spacer"></div>
 
     <button mat-button [matMenuTriggerFor]="menu">
@@ -37,14 +39,14 @@
     </button>
     
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="openChangePasswordDialog()">
             <span class="material-icons">
                 sync_lock
             </span>
             &nbsp;Change Password
         </button>
 
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logOut()">
             <span class="material-icons">
                 logout
             </span>
