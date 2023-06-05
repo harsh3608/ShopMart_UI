@@ -12,7 +12,6 @@ import {MatIconModule} from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
@@ -21,7 +20,6 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
   declarations: [
     UserLoginComponent,
     AddUserComponent,
-    UserHomePageComponent,
     PasswordForgotComponent,
     PasswordResetComponent,
     PasswordChangeComponent,

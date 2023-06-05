@@ -60,7 +60,7 @@ export class AddUserComponent implements OnInit{
                 timeOut: 2000,
               });
               this.dialogRef.close();
-              this.router.navigate(['/home'])
+              this.router.navigate(['/shop-home'])
             }
             else if(res.response.userType == 'Seller'){
               this.authService.setToken(res.response.token);

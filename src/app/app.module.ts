@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { SellerModule } from './seller/seller.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthConfigInterceptor } from './user/shared/authorization/interceptor/auth-config.interceptor';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthConfigInterceptor } from './user/shared/authorization/interceptor/a
     BrowserAnimationsModule,
     HomeModule,
     UserModule,
-    SellerModule
+    SellerModule,
+    CustomerModule
   ],
   providers: [
     {
