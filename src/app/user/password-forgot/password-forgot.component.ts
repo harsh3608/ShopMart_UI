@@ -16,6 +16,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class PasswordForgotComponent implements OnInit{
   emailValue!: ForgotPassword;
   passForm!: FormGroup;
+  isFormValid: boolean = false;
+  gotError: boolean = false;
+  errorMessage: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -34,23 +37,41 @@ export class PasswordForgotComponent implements OnInit{
   }
 
 
-  OpenResetPasswordDialog() {
-    this.passForm.markAllAsTouched();
-    if (this.passForm.valid) {
-    this.dialogRef.close();
+  // OpenResetPasswordDialog() {
+  //   this.passForm.markAllAsTouched();
+  //   if (this.passForm.valid) {
+  //   this.dialogRef.close();
 
-    //assigning form value to interface
-    this.emailValue = this.passForm.value; 
+  //   //assigning form value to interface
+  //   this.emailValue = this.passForm.value; 
     
-    //open the reset dialog
-    const dialogRef = this.dialog.open(PasswordResetComponent,
-      {
-        data: {  }
-      }
-    );
-    dialogRef.afterClosed().subscribe(result => {
-    });
-    }
+  //   //open the reset dialog
+  //   const dialogRef = this.dialog.open(PasswordResetComponent,
+  //     {
+  //       data: {  }
+  //     }
+  //   );
+  //   dialogRef.afterClosed().subscribe(result => {
+  //   });
+  //   }
+  // }
+
+  GetOTP(){
+    this.passForm.markAllAsTouched();
+     if (this.passForm.valid) {
+      this.isFormValid = true;
+      this.emailValue = this.passForm.value;
+      this.userService.ForgotPassword(this.emailValue).subscribe(
+        (res)=>{
+          if(res.isSuccess){
+            this.isFormValid = true;
+          }else{
+            this.gotError = true;
+            this.errorMessage = res.message;
+          }
+        }
+      )
+     }
   }
 
 
