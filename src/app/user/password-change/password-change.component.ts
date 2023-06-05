@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ChangePassword } from '../shared/models/passwords.models';
 import { AuthService } from '../shared/authorization/auth.service';
+import { UserService } from '../shared/services/user.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-change',
@@ -16,6 +19,9 @@ export class PasswordChangeComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
+    private dialogRef: MatDialogRef<PasswordChangeComponent>,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +54,21 @@ export class PasswordChangeComponent implements OnInit {
     this.changePassForm.markAllAsTouched();
     if (this.changePassForm.valid) {
       this.ChangePasswordRequest = this.changePassForm.value;
-      console.log(this.ChangePasswordRequest);
+      this.userService.ChangePassword(this.ChangePasswordRequest).subscribe(
+        (res)=>{
+          if(res.isSuccess){
+            this.toastr.success(res.message, 'Success!',{
+              timeOut: 2000,
+            });
+            this.dialogRef.close();
+          }else{
+            this.toastr.error(res.message, 'Failure!',{
+              timeOut: 2000,
+            });
+            this.dialogRef.close();
+          }
+        }
+      )
     }
   }
 

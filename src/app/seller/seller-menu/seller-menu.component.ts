@@ -36,5 +36,8 @@ export class SellerMenuComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  getPersonName(){
+    return this.authService.getPersonName();
+  }
 
 }

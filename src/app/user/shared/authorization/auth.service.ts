@@ -39,6 +39,12 @@ export class AuthService {
     return decodedToken.Email;
   }
 
+  getPersonName() {
+    const token = this.getToken();
+    const decodedToken = this.jwtHelperService.decodeToken(token);
+    return decodedToken.PersonName;
+  }
+
   isLoggedIn(): boolean {
     return localStorage.getItem("access_token") ? true : false
   }
