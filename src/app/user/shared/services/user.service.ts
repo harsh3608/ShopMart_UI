@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddUser, ReturnResponse, UserLogin } from '../models/user.models';
 import { Observable } from 'rxjs';
-import { ChangePassword } from '../models/passwords.models';
+import { ChangePassword, ForgotPassword, ResetPassword } from '../models/passwords.models';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,14 @@ export class UserService {
 
   ChangePassword(model:ChangePassword): Observable<ReturnResponse> {
     return this.http.post<ReturnResponse>(this.userBaseServerLink+'Change-Password', model, { headers: this.headers });
+  }
+
+  ForgotPassword(model:ForgotPassword): Observable<ReturnResponse> {
+    return this.http.post<ReturnResponse>(this.userBaseServerLink+'Forgot-Password', model, { headers: this.headers });
+  }
+
+  ResetPassword(model:ResetPassword): Observable<ReturnResponse> {
+    return this.http.post<ReturnResponse>(this.userBaseServerLink+'Reset-Password', model, { headers: this.headers });
   }
 
 }

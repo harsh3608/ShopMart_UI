@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/authorization/auth.service';
+import { PasswordForgotComponent } from '../password-forgot/password-forgot.component';
 
 @Component({
   selector: 'app-user-login',
@@ -63,7 +64,7 @@ export class UserLoginComponent implements OnInit{
               this.authService.getUserRole();
             }
           } else if(!res.isSuccess){
-            this.toastr.error(res.message, 'Success!',{
+            this.toastr.error(res.message, 'Failure!',{
               timeOut: 2000,
             });
             this.dialogRef.close();
@@ -71,10 +72,17 @@ export class UserLoginComponent implements OnInit{
         }
       );
     }
-      
-    
-    
+  }
 
+  OpenForgotPasswordDialog() {
+    this.dialogRef.close();
+    const dialogRef = this.dialog.open(PasswordForgotComponent,
+      {
+        data: {  }
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   //Function to toggle password visibility in password fields
@@ -91,7 +99,7 @@ export class UserLoginComponent implements OnInit{
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      //this.getExamsList();
+
     });
   }
 

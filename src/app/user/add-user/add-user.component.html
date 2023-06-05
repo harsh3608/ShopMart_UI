@@ -58,7 +58,8 @@
                             <span *ngIf="email.errors?.['required']">Email is required.</span>
                             <span *ngIf="email.errors?.['email']">Please enter a valid email address.</span>
                         </mat-error>
-                    </mat-form-field></div>
+                    </mat-form-field>
+                </div>
                 <div class="col"><mat-form-field>
                         <mat-label>Enter your phone number</mat-label>
                         <input matInput formControlName="phoneNumber" maxlength="10">
@@ -103,7 +104,7 @@
                     <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">Continue</button>
                 </div>
                 <div class="mt-4">
-                    <button *ngIf="data.userRole == 0" style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User?
+                    <button type="submit" *ngIf="data.userRole == 0" style="scale: 1.2;" mat-raised-button (click)="openLoginDialog()">Existing User?
                         Login</button>
                 </div>
             </div>

@@ -71,7 +71,7 @@ export class AddUserComponent implements OnInit{
               this.router.navigate(['/seller'])
             }
           } else if(!res.isSuccess){
-            this.toastr.error(res.message, 'Success!',{
+            this.toastr.error(res.message, 'Failure!',{
               timeOut: 2000,
             });
           }

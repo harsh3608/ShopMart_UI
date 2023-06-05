@@ -40,9 +40,17 @@ mat-form-field {
   transform: translateY(-50%);
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#forgot-password {
+  color: blue;
+}
+
+#forgot-password:hover {
+  color: red;
 }

@@ -45,6 +45,11 @@
                         <span *ngIf="passwordInput.errors?.['required']">Password is required.</span>
                     </mat-error>
                 </mat-form-field>
+                <div>
+                    <button type="button" id="forgot-password" mat-button (click)="OpenForgotPasswordDialog()">
+                        Forgot Password
+                    </button>
+                </div>
             </div>
 
             <div class="mt-2">
@@ -53,7 +58,7 @@
             </div>
         </form>
 
-        <div style="margin-top: 50%; font-size: medium;">
+        <div style="margin-top: 40%; font-size: medium;">
             <button mat-button (click)="OpenRegisterDialog(0)">
                 Don't have an account? Create new account
             </button>
