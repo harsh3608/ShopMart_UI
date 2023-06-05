@@ -3,7 +3,7 @@ export class UserLogin{
   password!: string
 }
 
-export interface LoginResponse {
+export interface ReturnResponse {
   statusCode: number
   isSuccess: boolean
   response: AuthenticationResponse

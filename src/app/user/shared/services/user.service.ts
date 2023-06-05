@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddUser, LoginResponse, UserLogin } from '../models/user.models';
+import { AddUser, ReturnResponse, UserLogin } from '../models/user.models';
 import { Observable } from 'rxjs';
+import { ChangePassword } from '../models/passwords.models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,16 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  loginUser(login:UserLogin): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(this.userBaseServerLink+'login', login, { headers: this.headers });
+  loginUser(login:UserLogin): Observable<ReturnResponse>{
+    return this.http.post<ReturnResponse>(this.userBaseServerLink+'login', login, { headers: this.headers });
   }
 
-  AddUserOrSeller(user:AddUser): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(this.userBaseServerLink+'register', user, { headers: this.headers });
+  AddUserOrSeller(user:AddUser): Observable<ReturnResponse>{
+    return this.http.post<ReturnResponse>(this.userBaseServerLink+'register', user, { headers: this.headers });
   }
+
+  ChangePassword(model:ChangePassword): Observable<ReturnResponse> {
+    return this.http.post<ReturnResponse>(this.userBaseServerLink+'Change-Password', model, { headers: this.headers });
+  }
+
 }

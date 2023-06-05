@@ -1,0 +1,53 @@
+.mat-toolbar {
+  background-color: rgb(70, 197, 247);
+  color: black;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between; */
+  
+}
+
+.logo {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.router:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.router {
+  background-color: rgb(70, 197, 247);
+}
+
+.rounded-dialog-container {
+  border-radius: 50px;
+}
+
+#search {
+  /* border: none; */
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  width: 350px;
+  /* outline: none; */
+  padding-right: 30px;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-container {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}

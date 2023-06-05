@@ -1,23 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PasswordChangeComponent } from 'src/app/user/password-change/password-change.component';
 import { AuthService } from 'src/app/user/shared/authorization/auth.service';
 
 @Component({
-  selector: 'app-seller-menu',
-  templateUrl: './seller-menu.component.html',
-  styleUrls: ['./seller-menu.component.css']
+  selector: 'app-customer-menu',
+  templateUrl: './customer-menu.component.html',
+  styleUrls: ['./customer-menu.component.css']
 })
-export class SellerMenuComponent implements OnInit {
+export class CustomerMenuComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
     private router: Router,
     public dialog: MatDialog,
-  ){}
+  ) 
+  { }
 
   ngOnInit(): void {
+    
   }
 
   openChangePasswordDialog(){
@@ -39,5 +41,4 @@ export class SellerMenuComponent implements OnInit {
   getPersonName(){
     return this.authService.getPersonName();
   }
-
 }
