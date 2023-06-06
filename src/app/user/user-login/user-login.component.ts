@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/authorization/auth.service';
+import { PasswordForgotComponent } from '../password-forgot/password-forgot.component';
 
 @Component({
   selector: 'app-user-login',
@@ -17,6 +18,7 @@ export class UserLoginComponent implements OnInit{
   userLogin!: UserLogin;
   public showPassword: boolean = false;
   loginForm!: FormGroup;
+  isLoading: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -38,7 +40,9 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
-    this.loginForm.markAllAsTouched();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.userService.loginUser(this.userLogin).subscribe(
         (res)=>{
@@ -63,7 +67,7 @@ export class UserLoginComponent implements OnInit{
               this.authService.getUserRole();
             }
           } else if(!res.isSuccess){
-            this.toastr.error(res.message, 'Success!',{
+            this.toastr.error(res.message, 'Failure!',{
               timeOut: 2000,
             });
             this.dialogRef.close();
@@ -71,10 +75,19 @@ export class UserLoginComponent implements OnInit{
         }
       );
     }
-      
+    }, 1500);
     
-    
+  }
 
+  OpenForgotPasswordDialog() {
+    this.dialogRef.close();
+    const dialogRef = this.dialog.open(PasswordForgotComponent,
+      {
+        data: {  }
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   //Function to toggle password visibility in password fields
@@ -91,7 +104,7 @@ export class UserLoginComponent implements OnInit{
       }
     );
     dialogRef.afterClosed().subscribe(result => {
-      //this.getExamsList();
+
     });
   }
 

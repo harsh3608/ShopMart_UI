@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit{
   addUserForm!: FormGroup;
   public showPassword: boolean = false;
   addUserRequest!: AddUser;
+  isLoading: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -48,7 +49,9 @@ export class AddUserComponent implements OnInit{
   }
 
   submitAddForm(){
-    this.addUserForm.markAllAsTouched();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.addUserForm.markAllAsTouched();
     if (this.addUserForm.valid) {
       this.addUserRequest = this.addUserForm.value;
       this.userService.AddUserOrSeller(this.addUserRequest).subscribe({
@@ -71,13 +74,15 @@ export class AddUserComponent implements OnInit{
               this.router.navigate(['/seller'])
             }
           } else if(!res.isSuccess){
-            this.toastr.error(res.message, 'Success!',{
+            this.toastr.error(res.message, 'Failure!',{
               timeOut: 2000,
             });
+            this.dialogRef.close();
           }
         }
       })
     }
+    }, 1500);
   }
 
   openLoginDialog(){
