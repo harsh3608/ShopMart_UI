@@ -27,7 +27,6 @@ export class PasswordForgotComponent implements OnInit{
     private userService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private toastr: ToastrService,
-    private router: Router,
     private fb: FormBuilder
   ) {}
 
@@ -56,7 +55,7 @@ export class PasswordForgotComponent implements OnInit{
             //open the reset dialog
             const dialogRef = this.dialog.open(PasswordResetComponent,
             {
-              data: { message : this.otpMessage  }
+              data: { email: this.email.value  }
             }
             );
             dialogRef.afterClosed().subscribe(result => {
