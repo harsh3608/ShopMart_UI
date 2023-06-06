@@ -18,7 +18,8 @@ export class PasswordForgotComponent implements OnInit{
   passForm!: FormGroup;
   isFormValid: boolean = false;
   gotError: boolean = false;
-  errorMessage: string = '';
+  otpMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -36,44 +37,48 @@ export class PasswordForgotComponent implements OnInit{
     })
   }
 
-
-  // OpenResetPasswordDialog() {
-  //   this.passForm.markAllAsTouched();
-  //   if (this.passForm.valid) {
-  //   this.dialogRef.close();
-
-  //   //assigning form value to interface
-  //   this.emailValue = this.passForm.value; 
-    
-  //   //open the reset dialog
-  //   const dialogRef = this.dialog.open(PasswordResetComponent,
-  //     {
-  //       data: {  }
-  //     }
-  //   );
-  //   dialogRef.afterClosed().subscribe(result => {
-  //   });
-  //   }
-  // }
-
   GetOTP(){
-    this.passForm.markAllAsTouched();
-     if (this.passForm.valid) {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.passForm.markAllAsTouched();
+      if (this.passForm.valid) {
       this.isFormValid = true;
       this.emailValue = this.passForm.value;
       this.userService.ForgotPassword(this.emailValue).subscribe(
         (res)=>{
           if(res.isSuccess){
-            this.isFormValid = true;
+            this.isFormValid = false;
+            this.gotError = false;
+            this.otpMessage = res.response;
+
+            this.dialogRef.close();
+            this.isLoading = false
+            //open the reset dialog
+            const dialogRef = this.dialog.open(PasswordResetComponent,
+            {
+              data: { message : this.otpMessage  }
+            }
+            );
+            dialogRef.afterClosed().subscribe(result => {
+            });
+
           }else{
             this.gotError = true;
-            this.errorMessage = res.message;
+            this.otpMessage = res.message;
+            this.passForm.reset();
+            this.isLoading = false
           }
         }
       )
-     }
+      }
+    }, 1000);
+    
   }
 
+  resetError() {
+    this.isFormValid = false;
+    this.gotError = false;
+  }
 
   get email(): FormControl {
     return this.passForm.get("email") as FormControl;

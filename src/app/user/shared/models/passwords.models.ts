@@ -13,3 +13,10 @@ export interface ResetPassword {
   otp: string
   newPassword: string
 }
+
+export interface OtpReturnResponse {
+  statusCode: number
+  isSuccess: boolean
+  response: string
+  message: string
+}
