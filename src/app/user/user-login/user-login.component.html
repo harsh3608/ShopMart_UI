@@ -1,4 +1,4 @@
-<div class="parent ">
+<div class="parent" [class.blur-background]="isLoading">
     <div class="card-1">
 
         <div class="row p-3" style="margin-top: 50%; color: blue; font-size: larger;">
@@ -53,13 +53,16 @@
             </div>
 
             <div class="mt-2">
-                <button type="submit" style="scale: 1.2;" mat-raised-button color="primary"
-                    >Login</button>
+                <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">
+                    Login
+                    &nbsp;
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
             </div>
         </form>
 
         <div style="margin-top: 40%; font-size: medium;">
-            <button mat-button (click)="OpenRegisterDialog(0)">
+            <button mat-button (click)="OpenRegisterDialog(0)" >
                 Don't have an account? Create new account
             </button>
         </div>

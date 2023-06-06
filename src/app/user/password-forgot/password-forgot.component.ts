@@ -52,7 +52,9 @@ export class PasswordForgotComponent implements OnInit{
 
             this.dialogRef.close();
             this.isLoading = false
-            //open the reset dialog
+            this.toastr.success(res.response, 'Success!',{
+              timeOut: 1500,
+            });
             const dialogRef = this.dialog.open(PasswordResetComponent,
             {
               data: { email: this.email.value  }

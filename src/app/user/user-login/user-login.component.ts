@@ -18,6 +18,7 @@ export class UserLoginComponent implements OnInit{
   userLogin!: UserLogin;
   public showPassword: boolean = false;
   loginForm!: FormGroup;
+  isLoading: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -39,7 +40,9 @@ export class UserLoginComponent implements OnInit{
   }
 
   SubmitloginForm(){
-    this.loginForm.markAllAsTouched();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.userService.loginUser(this.userLogin).subscribe(
         (res)=>{
@@ -72,6 +75,8 @@ export class UserLoginComponent implements OnInit{
         }
       );
     }
+    }, 1500);
+    
   }
 
   OpenForgotPasswordDialog() {
