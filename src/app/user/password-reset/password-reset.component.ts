@@ -44,24 +44,25 @@ export class PasswordResetComponent implements OnInit{
     setTimeout(() => {
       this.resetPassForm.markAllAsTouched();
       if (this.resetPassForm.valid) {
-      this.resetRequest = this.resetPassForm.value;
+        this.resetRequest = this.resetPassForm.value;
 
-      this.userService.ResetPassword(this.resetRequest).subscribe(
-        (res) => {
-          if(res.isSuccess){
-            this.dialogRef.close();
-            this.toastr.success(res.message, 'Success!',{
-              timeOut: 2000,
-            });
-          }else{
-            this.resetPassForm.reset();
-            this.isLoading = false;
-            this.toastr.error(res.message, 'Failure!',{
-              timeOut: 2000,
-            });
+        //console.log(this.resetRequest);
+        this.userService.ResetPassword(this.resetRequest).subscribe(
+          (res) => {
+            if(res.isSuccess){
+              this.dialogRef.close();
+              this.toastr.success(res.message, 'Success!',{
+                timeOut: 2000,
+              });
+            }else{
+              this.resetPassForm.reset();
+              this.isLoading = false;
+              this.toastr.error(res.message, 'Failure!',{
+                timeOut: 2000,
+             });
+            }
           }
-        }
-      )
+        )
       };
     }, 1000);
   }

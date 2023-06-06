@@ -33,4 +33,8 @@ export class UserService {
     return this.http.post<OtpReturnResponse>(this.userBaseServerLink+'Reset-Password', model, { headers: this.headers });
   }
 
+  ResendOtp(model:ForgotPassword): Observable<OtpReturnResponse> {
+    return this.http.post<OtpReturnResponse>(this.userBaseServerLink+'Resend-Otp', model, { headers: this.headers });
+  }
+
 }
