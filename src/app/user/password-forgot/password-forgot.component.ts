@@ -100,6 +100,7 @@ export class PasswordForgotComponent implements OnInit{
   }
 
   resendOtpMail() {
+    this.isLoading = true;
     this.emailValue = this.passForm.value;
     this.userService.ResendOtp(this.emailValue).subscribe(
       (res)=> {
@@ -107,10 +108,12 @@ export class PasswordForgotComponent implements OnInit{
           this.toastr.success(res.message, 'Success!',{
             timeOut: 1500,
           });
+          this.isLoading = false;
         }else{
           this.toastr.error(res.message, 'Failure!',{
             timeOut: 1500,
           });
+          this.isLoading = false;
         }
       }
     )
