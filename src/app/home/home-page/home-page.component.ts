@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
-import { AddUserComponent } from 'src/app/user/add-user/add-user.component';
+import { AddUserComponent } from 'src/app/user/user-add/user-add.component';
 import { AuthService } from 'src/app/user/shared/authorization/auth.service';
 import { UserLoginComponent } from 'src/app/user/user-login/user-login.component';
 

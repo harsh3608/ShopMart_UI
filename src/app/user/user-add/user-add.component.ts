@@ -10,8 +10,8 @@ import { AuthService } from '../shared/authorization/auth.service';
 
 @Component({
   selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  templateUrl: './user-add.component.html',
+  styleUrls: ['./user-add.component.css']
 })
 export class AddUserComponent implements OnInit{
   genderOptions: string[] = [
