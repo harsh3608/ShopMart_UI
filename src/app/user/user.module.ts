@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { UserRoutingModule } from './user-routing.module';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { AddUserComponent } from './add-user/add-user.component';
+import { AddUserComponent } from './user-add/add-user.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     PasswordForgotComponent,
     PasswordResetComponent,
     PasswordChangeComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
