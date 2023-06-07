@@ -12,7 +12,7 @@
     </div>
 
     <div class="card-2">
-        <div class="p-3" style="align-self: flex-end;">
+        <div class="p-3" style="align-self: flex-end;scale: 0.8;">
             <button mat-icon-button mat-dialog-close aria-label="Close">
                 <mat-icon>close</mat-icon>
             </button>
@@ -56,13 +56,14 @@
                 <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">
                     Login
                     &nbsp;
-                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span>
                 </button>
             </div>
         </form>
 
         <div style="margin-top: 40%; font-size: medium;">
-            <button mat-button (click)="OpenRegisterDialog(0)" >
+            <button mat-button (click)="OpenRegisterDialog(0)">
                 Don't have an account? Create new account
             </button>
         </div>
