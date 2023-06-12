@@ -31,27 +31,16 @@
   height: auto;
 }
 
-.sale {
-  width: 95%;
-  max-height: 100%;
-  max-width: 100%;
-  height: 70%;
-}
-
-.sale-holder {
-  width: 100%;
-  height: 70%;
-}
-
-.buttons{
-  display:flex;
-  flex-direction: row;
-  margin-top:-200px;
-  margin-left:15%;
-  margin-right:15%;
-}
 
 button:hover{
   /* transform: scale(1.1); */
   backdrop-filter: blur(10px);
+}
+
+.carousel-control-prev-icon {
+  background-color:blue;
+}
+
+.carousel-control-next-icon {
+  background-color:blue;
 }
