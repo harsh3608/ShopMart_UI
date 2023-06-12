@@ -14,5 +14,72 @@
 
 
 </mat-toolbar>
+<div>
+    <br>
 
-<!-- - -->
+    <div>
+        <div style="background-color: black; height: 200px; width: 100%;">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block" style="height: 250px; width: 100%;" src="assets/images/sale-2.avif" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" style="height: 250px; width: 100%;" src="assets/images/sale.avif" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" style="height: 250px; width: 100%;" src="assets/images/logo-1.jpg" alt="Third slide">
+                    </div>
+                </div>
+
+                <ng-container *ngIf="{ item: change$ | async } as actual">
+                    <button *ngIf="actual.item != 0" class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </ng-container>
+
+            </div>
+        </div>
+
+        <br>
+        <!-- <div style="--bs-aspect-ratio: 50%;">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100 h-25" src="assets/images/sale-2.avif" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100 h-25" src="assets/images/sale.avif" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100 h-25" src="assets/images/logo-1.jpg" alt="Third slide">
+                    </div>
+                </div>
+
+                <ng-container *ngIf="{ item: change$ | async } as actual">
+                    <button *ngIf="actual.item != 0" class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </ng-container>
+
+            </div>
+        </div> -->
+
+    </div>
+    <br>
+
+</div>
