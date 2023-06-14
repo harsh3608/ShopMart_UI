@@ -35,7 +35,7 @@ export class ProductsAddComponent implements OnInit{
       Price: new FormControl(0.0, [Validators.required]),
       ProductImage: new FormControl('product image'),
       CategoryId: new FormControl('', [Validators.required]),
-      ImageFile: new FormControl(null),
+      ImageFile: new FormControl(this.imageFile),
     })
   }
 
@@ -47,19 +47,22 @@ export class ProductsAddComponent implements OnInit{
       this.addProductForm.markAllAsTouched();
     if (this.addProductForm.valid) {
       this.addProductRequest = this.addProductForm.value;
-      this.productService.addProduct(this.addProductForm.value).subscribe({
+      this.productService.addProduct(this.addProductRequest).subscribe({
         next: (res)=>{
           if(res.isSuccess){
             
               this.toastr.success(res.message, 'Success!',{
                 timeOut: 2000,
               });
-              this.router.navigate(['/shop-home'])
+              this.isLoading = false;
+              this.router.navigate(['/shop-home']);
            
           } else if(!res.isSuccess){
+            this.isLoading = false;
             this.toastr.error(res.message, 'Failure!',{
               timeOut: 2000,
             });
+            
           }
         }
       })
