@@ -12,12 +12,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ProductsPoolComponent } from './products-pool/products-pool.component';
 
 
 @NgModule({
   declarations: [
     CustomerMenuComponent,
-    CustomerHomePageComponent
+    CustomerHomePageComponent,
+    ProductsPoolComponent
   ],
   imports: [
     CommonModule,
