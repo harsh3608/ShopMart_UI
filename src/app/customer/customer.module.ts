@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductsPoolComponent } from './products-pool/products-pool.component';
 import { MatGridListModule } from "@angular/material/grid-list";
+import { SellerModule } from '../seller/seller.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
     MatIconModule,
     HttpClientModule,
     MatGridListModule,
+    SellerModule
   ]
 })
 export class CustomerModule { }

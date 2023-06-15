@@ -1,7 +1,7 @@
 <app-seller-menu></app-seller-menu>
 
 <div class="container border p-3 rounded-3">
-    <form [formGroup]="addProductForm" (ngSubmit)="submitAddForm()">
+    <!-- <form [formGroup]="addProductForm" (ngSubmit)="submitAddForm()">
         <div class="row g-0">
 
             <div class="col text-center p-2 mb-3 ">
@@ -79,7 +79,90 @@
 
             </div>
         </div>
+    </form> -->
+
+
+    <form #addProductForm="ngForm" (ngSubmit)="submitAddForm()">
+        <div class="row g-0">
+
+            <div class="col text-center p-2 mb-3 ">
+                <span class="fs-3">Add Product</span>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter product name</mat-label>
+                        <input matInput [(ngModel)]="Name" name="Name">
+                        <!-- <mat-error *ngIf="Name.touched && Name.invalid">
+                            <span *ngIf="Name.errors?.['required']">Product name is required.</span>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter product price</mat-label>
+                        <input matInput [(ngModel)]="Price" name="Price">
+                        <!-- <mat-error *ngIf="Price.touched && Price.invalid">
+                            <span *ngIf="Price.errors?.['required']">Product price is required.</span>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter product category</mat-label>
+                        <mat-select [(ngModel)]="CategoryId" name="CategoryId">
+                            <mat-option *ngFor="let option of categories" [value]="option.categoryId">
+                                {{option.categoryName}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="CategoryId.touched && CategoryId.invalid">
+                            <span *ngIf="CategoryId.errors?.['required']">Category is required.</span>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Enter product description</mat-label>
+                        <input matInput [(ngModel)]="Description" name="Description">
+                        <!-- <mat-error *ngIf="Description.touched && Description.invalid">
+                            <span *ngIf="Description.errors?.['required']">Description is required.</span>
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
+                    <input type="file" class="file-input"  (change)="onFileSelected($any($event.target).files)">                  
+                </div>
+            </div>
+
+
+
+            <div class="buttons mt-3 mb-2">
+                <div class="mt-2">
+                    <button type="submit" style="scale: 1.2;" mat-raised-button color="primary">
+                        Add Product
+                        &nbsp;
+                        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </form>
+
+
 
 
 </div>

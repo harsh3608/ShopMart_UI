@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddProduct, AddProductresponse } from '../models/Product-models';
+import { AddProduct, AddProductresponse, GetProductsResponse } from '../models/Product-models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,4 +15,7 @@ export class ProductService {
     return this.http.post<AddProductresponse>(this.productBaseServerLink+'AddProduct', product, { headers: this.headers });
   }
 
+  getAllProducts(): Observable<GetProductsResponse> {
+    return this.http.get<GetProductsResponse>(this.productBaseServerLink+'GetAllProducts', { headers: this.headers })
+  }
 }

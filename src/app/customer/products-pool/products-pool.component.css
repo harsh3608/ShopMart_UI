@@ -1,0 +1,22 @@
+.product-card{
+    height: 250px;
+    width: 220px;
+}
+
+img {
+    width: 210px;
+    height: 150px;
+  }
+  
+  p {
+    overflow-y: scroll;
+    width: 200px;
+    height: 48px;
+    padding: 5px;
+    margin-bottom: 7%;
+    background: rgb(255, 255, 255);
+  }
+  
+  button{
+    float: right;
+  }

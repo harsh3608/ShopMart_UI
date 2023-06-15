@@ -18,6 +18,11 @@ export class ProductsAddComponent implements OnInit{
   imageFile: File | null = null;
   categories: Category[] = [];
 
+  Name!: string;
+  Description!: string;
+  Price!: number;
+  CategoryId!: string;
+
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
@@ -39,72 +44,113 @@ export class ProductsAddComponent implements OnInit{
     })
   }
 
+  // submitAddForm() {
+  //   debugger;
+  //   console.log(this.addProductForm.value);
+  //   this.isLoading = true;
+  //   setTimeout(() => {
+  //     this.addProductForm.markAllAsTouched();
+  //   if (this.addProductForm.valid) {
+  //     this.addProductRequest = this.addProductForm.value;
+  //     this.productService.addProduct(this.addProductRequest).subscribe({
+  //       next: (res)=>{
+  //         if(res.isSuccess){
+            
+  //             this.toastr.success(res.message, 'Success!',{
+  //               timeOut: 2000,
+  //             });
+  //             this.isLoading = false;
+  //             this.router.navigate(['/shop-home']);
+           
+  //         } else if(!res.isSuccess){
+  //           this.isLoading = false;
+  //           this.toastr.error(res.message, 'Failure!',{
+  //             timeOut: 2000,
+  //           });
+            
+  //         }
+  //       }
+  //     })
+  //   }
+  //   }, 1500);
+  // }
+
+
+  // onFileSelected(files: FileList | null) {
+  //   // if (files && files.length > 0) {
+  //   //   this.imageFile = files.item(0);
+  //   // }
+
+  //   if (files && files.length > 0) {
+  //     const file = files.item(0);
+  //     this.addProductForm.patchValue({ ImageFile: file });
+  //   }
+    
+  // }
+
+
   submitAddForm() {
     debugger;
-    console.log(this.addProductForm.value);
-    this.isLoading = true;
-    setTimeout(() => {
-      this.addProductForm.markAllAsTouched();
-    if (this.addProductForm.valid) {
-      this.addProductRequest = this.addProductForm.value;
-      this.productService.addProduct(this.addProductRequest).subscribe({
-        next: (res)=>{
-          if(res.isSuccess){
-            
-              this.toastr.success(res.message, 'Success!',{
-                timeOut: 2000,
-              });
-              this.isLoading = false;
-              this.router.navigate(['/shop-home']);
-           
-          } else if(!res.isSuccess){
-            this.isLoading = false;
-            this.toastr.error(res.message, 'Failure!',{
-              timeOut: 2000,
-            });
-            
-          }
-        }
-      })
-    }
-    }, 1500);
-  }
+    if (this.imageFile) {
+      const formData = new FormData();
+      formData.append('Name', this.Name.valueOf());
+      formData.append('Description', this.Description.valueOf());
+      formData.append('Price', (this.Price).toString().valueOf());
+      formData.append('CategoryId', this.CategoryId.valueOf());
+      formData.append('ImageFile', this.imageFile);
 
+      this.productService.addProduct(formData)
+      .subscribe({
+              next: (res)=>{
+                if(res.isSuccess){
+                  
+                    this.toastr.success(res.message, 'Success!',{
+                      timeOut: 2000,
+                    });
+                    this.isLoading = false;
+                    this.router.navigate(['/shop-home']);
+                 
+                } else if(!res.isSuccess){
+                  this.isLoading = false;
+                  this.toastr.error(res.message, 'Failure!',{
+                    timeOut: 2000,
+                  });
+                  
+                }
+              }
+            })
+    }
+  }
 
   onFileSelected(files: FileList | null) {
-    // if (files && files.length > 0) {
-    //   this.imageFile = files.item(0);
-    // }
-
     if (files && files.length > 0) {
-      const file = files.item(0);
-      this.addProductForm.patchValue({ ImageFile: file });
+      this.imageFile = files.item(0);
     }
-    
   }
 
-  get Name(): FormControl {
-    return this.addProductForm.get("Name") as FormControl;
-  }
-  get Description(): FormControl {
-    return this.addProductForm.get("Description") as FormControl;
-  }
 
-  get Price(): FormControl {
-    return this.addProductForm.get("Price") as FormControl;
-  }
+  // get Name(): FormControl {
+  //   return this.addProductForm.get("Name") as FormControl;
+  // }
+  // get Description(): FormControl {
+  //   return this.addProductForm.get("Description") as FormControl;
+  // }
 
-  get ProductImage(): FormControl {
-    return this.addProductForm.get("ProductImage") as FormControl;
-  }
+  // get Price(): FormControl {
+  //   return this.addProductForm.get("Price") as FormControl;
+  // }
 
-  get CategoryId(): FormControl {
-    return this.addProductForm.get("CategoryId") as FormControl;
-  }
+  // get ProductImage(): FormControl {
+  //   return this.addProductForm.get("ProductImage") as FormControl;
+  // }
 
-  get ImageFile(): FormControl {
-    return this.addProductForm.get("ImageFile") as FormControl;
-  }
+  // get CategoryId(): FormControl {
+  //   return this.addProductForm.get("CategoryId") as FormControl;
+  // }
+
+  // get ImageFile(): FormControl {
+  //   return this.addProductForm.get("ImageFile") as FormControl;
+  // }
 
 
 }
