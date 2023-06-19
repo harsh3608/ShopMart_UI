@@ -1,5 +1,7 @@
-<app-customer-menu></app-customer-menu>
+<app-customer-menu [cartCount]="cartCount"></app-customer-menu>
 <br>
 
-<app-products-pool></app-products-pool>
+<app-products-pool (cartCountChange)="cartCount = $event"></app-products-pool>
 
+
+ 

@@ -7,7 +7,7 @@ export interface AddProduct{
     ImageFile: any
 }
 
-export interface AddProductresponse {
+export interface ProductReturnResponse {
     statusCode: number
     isSuccess: boolean
     response: Product

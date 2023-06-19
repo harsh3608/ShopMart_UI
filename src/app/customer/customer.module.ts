@@ -14,13 +14,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductsPoolComponent } from './products-pool/products-pool.component';
 import { MatGridListModule } from "@angular/material/grid-list";
 import { SellerModule } from '../seller/seller.module';
+import { CartComponent } from './cart/cart.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 
 @NgModule({
   declarations: [
     CustomerMenuComponent,
     CustomerHomePageComponent,
-    ProductsPoolComponent
+    ProductsPoolComponent,
+    CartComponent,
+    FavouritesComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,7 @@ import { SellerModule } from '../seller/seller.module';
     MatIconModule,
     HttpClientModule,
     MatGridListModule,
-    SellerModule
+    SellerModule,
   ]
 })
 export class CustomerModule { }

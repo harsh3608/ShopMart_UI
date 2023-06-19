@@ -45,6 +45,19 @@ export class AuthService {
     return decodedToken.PersonName;
   }
 
+  getFavouriteId() {
+    const token = this.getToken();
+    const decodedToken = this.jwtHelperService.decodeToken(token);
+    return decodedToken.FavouriteId;
+  }
+
+  getCartId() {
+    const token = this.getToken();
+    const decodedToken = this.jwtHelperService.decodeToken(token);
+    return decodedToken.CartId;
+  }
+
+
   isLoggedIn(): boolean {
     return localStorage.getItem("access_token") ? true : false
   }
