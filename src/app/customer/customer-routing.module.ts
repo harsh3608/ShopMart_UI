@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerHomePageComponent } from './customer-home-page/customer-home-page.component';
 import { CustomerGuard } from '../user/shared/authorization/guards/customer.guard';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [{
   path: 'shop-home',
@@ -12,6 +13,11 @@ const routes: Routes = [{
 {
   path: 'favourites',
   component: FavouritesComponent,
+  canActivate: [CustomerGuard]
+},
+{
+  path: 'cart',
+  component: CartComponent,
   canActivate: [CustomerGuard]
 }];
 

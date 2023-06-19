@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PasswordChangeComponent } from 'src/app/user/password-change/password-change.component';
@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/user/shared/authorization/auth.service';
   styleUrls: ['./customer-menu.component.css']
 })
 export class CustomerMenuComponent implements OnInit{
+  @Input() cartCount: number = 0;
 
   constructor(
     private authService: AuthService,

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./customer-home-page.component.css']
 })
 export class CustomerHomePageComponent {
+  cartCount!: number;
 
 }
