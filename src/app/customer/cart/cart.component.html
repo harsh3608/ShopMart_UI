@@ -1,2 +1,69 @@
-<app-customer-menu></app-customer-menu>
-<p>cart works!</p>
+<app-customer-menu [cartCount]="cartCount"></app-customer-menu>
+<br>
+<ng-container *ngIf="cartCount==0">
+    <div class="container border p-3 rounded-3">
+        <h3><strong>Cart</strong></h3>
+        <hr />
+        <div class="d-flex flex-column">
+
+            <div class="align-self-center mt-2" style="height: 300px; width: 400px;">
+                <img src="assets/images/Capture.PNG" alt="picture" style="margin-left: 18px; height: 300px; width: 400px;" />
+            </div>
+            <div class="align-self-center">
+                <h2>Your Cart is empty!</h2>
+            </div>
+            <div class="align-self-center">
+                <h4>Add item to it now!</h4>
+            </div>
+            <div class="align-self-center">
+                <button class="btn btn-primary" [routerLink]="['/shop-home']">Shop Now</button>
+            </div>
+
+        </div>
+
+    </div>
+</ng-container>
+
+<ng-container *ngIf="cartCount!=0">
+    <div class="container border p-3 rounded-3">
+      <h3><strong>Cart</strong></h3>
+      <hr />
+      <div class="">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Product Description</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+  
+          <tbody *ngFor="let item of cartProducts, let i = index">
+            <tr>
+              
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div style="margin-top: 4%;">
+          <div class="row">
+            <div class="col">
+              <button pRipple pTooltip="Enter your username" tooltipPosition="left" class="btn btn-danger" >Empty Cart</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-success">Place Order</button>
+            </div>
+            <div class="col">
+              Total Items: <input readonly value="{{cartCount}}" class="aggtxt"/>
+            </div>
+            <div class="col">
+              Total Price:  <input readonly value="{{0| currency:'INR'}}" class="aggtxt"/>
+            </div>
+          </div>
+        </div> -->
+  
+      </div>
+    </div>
+  </ng-container>

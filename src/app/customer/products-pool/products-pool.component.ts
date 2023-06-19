@@ -65,7 +65,6 @@ export class ProductsPoolComponent implements OnInit{
         if(res.isSuccess){
           this.cartCount = res.response.length;
           this.cartCountChange.emit(this.cartCount);
-          console.log(this.cartCount);
         }
       }
     )
