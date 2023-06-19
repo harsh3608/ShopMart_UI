@@ -27,8 +27,11 @@
               </div>
               <div class="col">
                 <div class="btn">
-                    <i class="fa fa-heart" *ngIf="isFavourite" style="color: red; scale: 1.5;" aria-hidden="true"></i>
-                    <i class="fa fa-heart" *ngIf="!isFavourite" style="color: grey; scale: 1.5;" aria-hidden="true"></i>
+                    <i class="fa fa-heart" *ngIf="isFavourite(item.id)" style="color: red; scale: 1.5;"
+                    (click)="RemoveFromFavs(item.id)" aria-hidden="true"></i>
+                     
+                    <i class="fa fa-heart" *ngIf="!isFavourite(item.id)" style="color: grey; scale: 1.5;"
+                      (click)="AddToFavs(item.id)" aria-hidden="true"></i>
                 </div>
                 
                 <button class="btn btn-success"  >

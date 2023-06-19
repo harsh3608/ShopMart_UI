@@ -38,7 +38,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     MatIconModule,
     HttpClientModule,
     MatGridListModule,
-    SellerModule
+    SellerModule,
   ]
 })
 export class CustomerModule { }
