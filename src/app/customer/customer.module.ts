@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerMenuComponent } from './customer-menu/customer-menu.component';
 import { CustomerHomePageComponent } from './customer-home-page/customer-home-page.component';
@@ -12,12 +11,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ProductsPoolComponent } from './products-pool/products-pool.component';
+import { MatGridListModule } from "@angular/material/grid-list";
+import { SellerModule } from '../seller/seller.module';
 
 
 @NgModule({
   declarations: [
     CustomerMenuComponent,
-    CustomerHomePageComponent
+    CustomerHomePageComponent,
+    ProductsPoolComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    MatGridListModule,
+    SellerModule
   ]
 })
 export class CustomerModule { }

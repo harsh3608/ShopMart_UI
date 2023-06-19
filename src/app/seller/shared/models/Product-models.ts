@@ -10,7 +10,7 @@ export interface AddProduct{
 export interface AddProductresponse {
     statusCode: number
     isSuccess: boolean
-    response: Response
+    response: Product
     message: string
   }
   
@@ -37,3 +37,11 @@ export interface AddProductresponse {
     response: Category[]
     message: string
   }
+
+
+export interface GetProductsResponse {
+    statusCode: number
+    isSuccess: boolean
+    response: Product[]
+    message: string
+}

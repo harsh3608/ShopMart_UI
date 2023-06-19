@@ -1,0 +1,45 @@
+<div class="container rounded-3 border w-100">
+    <!-- <mat-grid-list class="mt-4" cols="5"  gutterSize="5">
+        <mat-grid-tile *ngFor="let product of products;let i=index" 
+        class="product-card border p-3 rounded-3 col col-lg-4 col-sm-4">
+
+        <div class="d-flex flex-column p-2" >
+            <img style="height: 100px; width: 100px;" src="{{imageBaseLink+product.productImage}}" alt="{{product.name}}"/>
+
+            <h2>{{product.name}}</h2>
+            <span>{{product.description}}</span>
+        </div>
+        
+    </mat-grid-tile>
+
+    </mat-grid-list> -->
+
+
+    <mat-grid-list class="mt-4 mb-4" cols="5" rowHeight="350px" gutterSize="6">
+        <mat-grid-tile class=" p-3 rounded-3 col col-lg-4 col-sm-4" *ngFor="let item of products">
+          <div class="p-2 product-cart">
+            <img src="{{imageBaseLink+item.productImage}}" />
+            <h2 class="p-2">{{item.name}}</h2>
+            <p>{{item.description}}</p>
+            <div class="row">
+              <div class="col p-2" style="font-weight: 500; ">
+                {{item.price | currency:'INR'}}
+              </div>
+              <div class="col">
+                <div class="btn">
+                    <i class="fa fa-heart" *ngIf="isFavourite" style="color: red; scale: 1.5;" aria-hidden="true"></i>
+                    <i class="fa fa-heart" *ngIf="!isFavourite" style="color: grey; scale: 1.5;" aria-hidden="true"></i>
+                </div>
+                
+                <button class="btn btn-success"  >
+                  <i class="fa fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+
+
+</div>
