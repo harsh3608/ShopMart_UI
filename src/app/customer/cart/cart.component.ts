@@ -5,7 +5,8 @@ import { CartService } from '../shared/services/cart.service';
 import { CartProduct } from '../shared/models/cart-models';
 import { ProductService } from 'src/app/seller/shared/services/product.service';
 import { Product } from 'src/app/seller/shared/models/Product-models';
-
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -16,6 +17,9 @@ export class CartComponent implements OnInit{
   cartId:any;
   cartProducts: CartProduct[]=[];
   product!: Product;
+  products: Product[]=[];
+  imageBaseLink: string = "https://localhost:7071/resources/";
+  uniqueProducts: Product[]=[];
 
   constructor(
     private authService: AuthService,
@@ -27,6 +31,7 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     this.cartId = this.authService.getCartId();
     this.GetAllCartProductsAndCount();
+    this.GetUniqueProducts();
   }
 
 
@@ -36,26 +41,52 @@ export class CartComponent implements OnInit{
         if(res.isSuccess){
           this.cartCount = res.response.length;
           this.cartProducts = res.response;
-          
-
-          console.log(this.cartCount);
+          //to create array of products drom cart products
+          for (const cartProduct of this.cartProducts) {
+           this.GetProductById(cartProduct.productId).subscribe(res=>{
+              this.products.push(res);               
+            });            
+          }    
+           
         };
       }
     );
   }
 
 
-  getProductById(productId: any) {
-    this.productService.getProductById(productId).subscribe(
-      (res) => {
-        if(res.isSuccess){
-          this.product = res.response;
+
+  
+  //To get whole product from product id
+  GetProductById(productId: any): Observable<Product> {
+    return this.productService.getProductById(productId).pipe(
+      map((res) => {
+        if (res.isSuccess) {
+          return res.response;
         }
-      }
-    )
+        throw new Error('Failed to retrieve product');
+      })
+    );
   }
 
+  GetUniqueProducts() {
+
+    console.log(this.products);
+    for(const product of this.products){
+      console.log(product);
+    }
+    
+    
 
 
+    // this.uniqueProducts = this.products.filter((product, index) => uniqueIds.indexOf(product.id) === index);
+    
+    //console.log(this.uniqueProducts);
+  }
+
+  //get qty of product in the cart
+  GetQuantity(item: any): number {
+    const count = this.products.filter((product) => product.name === item.name).length;
+    return count > 1 ? count : 1;
+  }
 
 }
