@@ -29,7 +29,10 @@ import { FavouritesComponent } from './favourites/favourites.component';
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+}),
     MatToolbarModule,
     MatListModule,
     MatMenuModule,

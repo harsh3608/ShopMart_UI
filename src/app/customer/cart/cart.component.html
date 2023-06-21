@@ -34,7 +34,7 @@
           <h2><strong>Shopping Cart</strong></h2>
         </div>
         <div class="mb-4 align-self-end">
-          <button mat-button id="empty-cart">Empty Cart</button>
+          <button mat-button id="empty-cart" (click)="EmptyShoppingCart()">Empty Cart</button>
         </div>
       </div>
       <hr />
@@ -58,7 +58,7 @@
                   </button>
                   &nbsp;&nbsp;
 
-                  <h2 class="mt-1"><strong>{{GetQuantity(item)}}</strong></h2>
+                  <h2 class="mt-1"><strong>{{GetQuantity(item.id)}}</strong></h2>
 
                   &nbsp;&nbsp;
                   <button mat-button (click)="AddProductToCart(item.id)">
@@ -74,7 +74,7 @@
             <div class="d-flex flex-row justify-content-center">
               <h2><strong>{{item.price | currency:'INR'}}</strong></h2>
 
-              <button mat-button id="empty-cart">
+              <button mat-button id="empty-cart" (click)="DeleteCartProduct(item.id)">
                 <span class="material-icons">
                   delete
                 </span>

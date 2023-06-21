@@ -100,22 +100,42 @@ export class CartComponent implements OnInit{
   }
  
   //get qty of product in the cart
-  GetQuantity(item: any): number {
-    const count = this.products.filter((product) => product.name === item.name).length;
+  GetQuantity(productId: any): number {
+    const count = this.products.filter((product) => product.id === productId).length;
     return count > 1 ? count : 1;
   }
 
   
-
-  // GetAllCartProductsCount() {
-  //   this.cartService.GetAllCartProducts(this.cartId).subscribe(
-  //     (res) => {
-  //       if(res.isSuccess){
-  //         this.cartCount = res.response.length;
-  //       }
-  //     }
-  //   )
-  // }
+ //###################################################################
+  GetAllCartProductsCount() {
+    this.cartService.GetAllCartProducts(this.cartId).subscribe(
+      (res) => {
+        if(res.isSuccess){
+          this.cartCount = res.response.length;
+          this.cartProducts = res.response;
+          //////////
+          const uniqueProductIds = new Set();
+          this.products.length = 0;
+          this.totalPrice = 0;
+          this.uniqueProducts.length = 0;
+          ////////
+          for (const cartProduct of this.cartProducts) {
+            this.GetProductById(cartProduct.productId).subscribe(res=>{
+               this.products.push(res); 
+               this.totalPrice += res.price;             
+             });  
+             //
+             if (!uniqueProductIds.has(cartProduct.productId)) {
+               uniqueProductIds.add(cartProduct.productId); // Add the product ID to the set
+               this.GetProductById(cartProduct.productId).subscribe(res => {
+                  this.uniqueProducts.push(res);
+               });
+             }          
+           };
+        }
+      }
+    )
+  }
 
   AddProductToCart(productId: any){
     this.AddCartRequest = {
@@ -131,11 +151,10 @@ export class CartComponent implements OnInit{
         }
       }
     );
-    this.cartCount = 0;
-    this.cartProducts.length = 0;
-    this.products.length = 0;
-    this.uniqueProducts.length = 0;
-    this.GetAllCartProductsAndCount();
+    
+    this.GetAllCartProductsCount();
+    
+
   }
 
 
@@ -149,12 +168,47 @@ export class CartComponent implements OnInit{
         }
       }
     );
-    this.GetAllCartProductsAndCount();
+    
+    this.GetAllCartProductsCount();
+    this.GetQuantity(productId);
   }
 
+  //To remove the product from the cart, whether it has single or multiple units
+  DeleteCartProduct(productId: any){
+    this.cartService.DeleteCartProduct(productId).subscribe(
+      (res)=>{
+        if(res.isSuccess){
+          this.toastr.success('Product Deleted from shopping Cart !', 'Success!',{
+            timeOut: 2000,
+          });
+        }else{
+          this.toastr.info('Failed while deleting product from cart !', 'Info!',{
+            timeOut: 2000,
+          });
+        }
+      }
+    );
+    this.GetAllCartProductsCount();
+  }
 
-
-
+  //To Remove all the products from the cart at once
+  EmptyShoppingCart(){
+    let cartId = this.cartId;
+    this.cartService.EmptyCart(cartId).subscribe(
+      (res)=>{
+        if(res.isSuccess){
+          this.toastr.success('Your shopping cart is empty now !', 'Success!',{
+            timeOut: 2000,
+          });
+        }else{
+          this.toastr.info('Failed while emoving products from shopping cart !', 'Info!',{
+            timeOut: 2000,
+          });
+        }
+      }
+    );
+    this.GetAllCartProductsCount();
+  }
 
 
 

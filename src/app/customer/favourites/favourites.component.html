@@ -1,2 +1,106 @@
-<app-customer-menu></app-customer-menu>
-<p>favourites works!</p>
+<app-customer-menu [cartCount]="cartCount"></app-customer-menu>
+<br>
+
+<ng-container *ngIf="favCount==0">
+    <div class="container border p-3 rounded-3">
+        <div class="d-flex flex-row">
+            <span class="material-icons text-danger ">
+                favorite
+            </span>
+            &nbsp;&nbsp;
+            <h2>
+                <strong>
+                    Your FavList
+                </strong>
+            </h2>
+        </div>
+
+
+        <hr />
+        <div class="d-flex flex-column">
+
+            <div class="align-self-center mt-2" style="height: 300px; width: 400px;">
+                <img src="assets/images/Capture.PNG" alt="picture"
+                    style="margin-left: 18px; height: 300px; width: 400px;" />
+            </div>
+            <div class="align-self-center">
+                <h2>Your FavList is empty!</h2>
+            </div>
+            <div class="align-self-center">
+                <h4>Add item to it now!</h4>
+            </div>
+            <div class="align-self-center">
+                <button class="btn btn-primary" [routerLink]="['/shop-home']">Shop Now</button>
+            </div>
+
+        </div>
+
+    </div>
+</ng-container>
+
+<ng-container *ngIf="favCount!=0">
+
+    <div class="container border p-3 rounded-3 bg-light">
+
+        <div class="d-flex  justify-content-between" style="width: match-parent;">
+            <div class="d-flex flex-row">
+                <span class="material-icons text-danger ">
+                    favorite
+                </span>
+                &nbsp;&nbsp;
+                <h2>
+                    <strong>
+                        Your FavList
+                    </strong>
+                </h2>
+            </div>
+            <!-- <div class="mb-4 align-self-end">
+          <button mat-button id="empty-cart" (click)="EmptyShoppingCart()">Empty Cart</button>
+        </div> -->
+        </div>
+        <hr />
+        <mat-grid-list cols="2" rowHeight="250px" gutterSize="10">
+            <mat-grid-tile class="p-3 col col-lg-4 col-sm-4 bg-white border rounded-3" *ngFor="let item of products">
+                <div class="d-flex  w-100 p-4 my-3">
+                    <div class="align-self-start">
+                        <img src="{{imageBaseLink+item.productImage}}" />
+                    </div>
+
+                    <div class="d-flex flex-column px-4">
+                        <div class="d-flex justify-content-between w-5">
+                            <h2>{{item.name}}</h2>
+                            <h2><strong>{{item.price | currency:'INR'}}</strong></h2>
+                        </div>
+
+                        <p>{{item.description}}</p>
+                        <span><strong>Category : </strong>{{ GetCategoryById(item.categoryId) }}</span>
+                        <button mat-button id="empty-cart" (click)="RemoveFromFavs
+                        (item.id)">
+                            <span class="material-icons text-danger">
+                                delete
+                            </span>
+                        </button>
+
+                    </div>
+
+                    <!-- <div class="d-flex flex-row justify-content-center">
+                        <h2><strong>{{item.price | currency:'INR'}}</strong></h2>
+
+                        <button mat-button id="empty-cart" (click)="RemoveFromFavs
+                        (item.id)">
+                            <span class="material-icons">
+                                delete
+                            </span>
+                        </button>
+                    </div> -->
+
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+
+    </div>
+
+
+
+</ng-container>
