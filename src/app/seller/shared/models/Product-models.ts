@@ -38,6 +38,13 @@ export interface ProductReturnResponse {
     message: string
   }
 
+  export interface CategoryReturnResponse {
+    statusCode: number
+    isSuccess: boolean
+    response: Category
+    message: string
+  }
+
 
 export interface GetProductsResponse {
     statusCode: number

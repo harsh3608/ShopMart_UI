@@ -25,4 +25,12 @@ export class CartService {
   GetAllCartProducts(cartId: any) :Observable<CartListResponse> {
     return this.http.get<CartListResponse>(this.cartBaseServerLink+'GetAllCartProducts/' + cartId, { headers: this.headers })
   }
+
+  DeleteCartProduct(productId: any) :Observable<CartReturnResponse> {
+    return this.http.delete<CartReturnResponse> (this.cartBaseServerLink + 'DeleteCartProduct/' + productId, { headers: this.headers })
+  }
+
+  EmptyCart(cartId: any) :Observable<CartReturnResponse> {
+    return this.http.delete<CartReturnResponse> (this.cartBaseServerLink + 'EmptyCart/' + cartId, { headers: this.headers })
+  }
 }
