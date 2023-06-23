@@ -25,7 +25,6 @@ export class CartComponent implements OnInit{
   categories: Category[]=[];
   category!: Category;
   AddCartRequest!: CartProductRequest;
-  openAddBox:boolean = false;
 
   constructor(
     private authService: AuthService,

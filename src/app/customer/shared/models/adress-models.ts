@@ -7,7 +7,7 @@ export interface AddressAddRequest {
 export interface AddressReturnResponse {
     statusCode: number
     isSuccess: boolean
-    response: Response
+    response: Address
     message: string
 }
   
@@ -21,7 +21,7 @@ export interface Address {
 export interface AddressListReturnResponse {
     statusCode: number
     isSuccess: boolean
-    response: Response[]
+    response: Address[]
     message: string
 }
 

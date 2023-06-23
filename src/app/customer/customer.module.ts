@@ -17,6 +17,7 @@ import { SellerModule } from '../seller/seller.module';
 import { CartComponent } from './cart/cart.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AddressComponent } from './address/address.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,10 +32,11 @@ import { AddressComponent } from './address/address.component';
   imports: [
     CommonModule,
     CustomerRoutingModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,
-}),
+    }),
     MatToolbarModule,
     MatListModule,
     MatMenuModule,

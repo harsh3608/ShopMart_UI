@@ -23,14 +23,14 @@ export class AddressService {
   }
 
   GetUserAddressById(addressId: any) :Observable<AddressReturnResponse> {
-    return this.http.put<AddressReturnResponse> (this.addressBaseServerLink+ 'GetAddressById/' + addressId, { headers: this.headers })
+    return this.http.get<AddressReturnResponse> (this.addressBaseServerLink+ 'GetAddressById/' + addressId, { headers: this.headers })
   }
 
   GetAllUserAddress(userId: any) :Observable<AddressListReturnResponse> {
-    return this.http.put<AddressListReturnResponse> (this.addressBaseServerLink+ 'GetAllUserAddresses/' + userId, { headers: this.headers })
+    return this.http.get<AddressListReturnResponse> (this.addressBaseServerLink+ 'GetAllUserAddresses/' + userId, { headers: this.headers })
   }
 
   DeleteUserAddressById(addressId: any) :Observable<DeleteAddressReturnResponse> {
-    return this.http.put<DeleteAddressReturnResponse> (this.addressBaseServerLink+ 'DeleteAddressById/' + addressId, { headers: this.headers })
+    return this.http.delete<DeleteAddressReturnResponse> (this.addressBaseServerLink+ 'DeleteAddressById/' + addressId, { headers: this.headers })
   }
 }
