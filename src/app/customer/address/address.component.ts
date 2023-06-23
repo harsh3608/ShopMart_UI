@@ -55,24 +55,44 @@ export class AddressComponent implements OnInit{
             this.toastr.success(res.message, 'Success!', {
               timeOut: 2000,
             });
-            
+            this.GetAlluserAddresses();
           } else {
             this.toastr.error(res.message, 'Failure', {
               timeOut: 2000,
             });
-            //console.log(res);
-          }
+          };
         }
-      })
-    }
+      });
+    };
+    
+    this.ToggleAddBox();
   }
 
   ToggleAddBox() {
     this.openAddBox = !this.openAddBox;
   }
 
+  RemoveAddress(addressId: any) {
+    this.addressService.DeleteUserAddressById(addressId).subscribe({
+      next: (res) => {
+        if (res.isSuccess == true) {
+          this.toastr.success(res.message, 'Success!', {
+            timeOut: 2000,
+          });
+          this.GetAlluserAddresses();
+        } else {
+          this.toastr.error(res.message, 'Failure', {
+            timeOut: 2000,
+          });
+        };
+      }
+    });
+    
+  }
 
+  UpdateAddress() {
 
+  }
 
 
   get address(): FormControl {
@@ -80,3 +100,5 @@ export class AddressComponent implements OnInit{
   }
 
 }
+
+
