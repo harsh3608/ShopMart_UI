@@ -16,6 +16,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { SellerModule } from '../seller/seller.module';
 import { CartComponent } from './cart/cart.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { AddressComponent } from './address/address.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
     CustomerHomePageComponent,
     ProductsPoolComponent,
     CartComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,
