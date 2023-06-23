@@ -14,8 +14,13 @@ export class AddressComponent implements OnInit{
   openAddBox:boolean = false;
   addresses: Address[] = [];
   addressForm!: FormGroup;
-  request!: AddressAddRequest;
+  addRequest!: AddressAddRequest;
   userId: any;
+  openUpdateBox: boolean = false;
+  addressUpdateForm!: FormGroup;
+  updateRequest!: Address;
+  currentAddress!: Address;
+  
 
   constructor(
     private authService: AuthService,
@@ -32,6 +37,13 @@ export class AddressComponent implements OnInit{
       title: new FormControl('title'),
       address: new FormControl('',[Validators.required, Validators.minLength(30)]),
     });
+
+    // this.addressUpdateForm = new FormGroup({
+    //   addressId: new FormControl(''),
+    //   userId: new FormControl(''),
+    //   title: new FormControl(''),
+    //   address: new FormControl('',[Validators.required, Validators.minLength(30)]),
+    // })
   }
 
   GetAlluserAddresses() {
@@ -48,8 +60,8 @@ export class AddressComponent implements OnInit{
   submitRequest(){
     this.addressForm.markAllAsTouched();
     if (this.addressForm.valid) {
-      this.request = this.addressForm.value;
-      this.addressService.AddUserAddress(this.request).subscribe({
+      this.addRequest = this.addressForm.value;
+      this.addressService.AddUserAddress(this.addRequest).subscribe({
         next: (res) => {
           if (res.isSuccess == true) {
             this.toastr.success(res.message, 'Success!', {
@@ -72,6 +84,10 @@ export class AddressComponent implements OnInit{
     this.openAddBox = !this.openAddBox;
   }
 
+  ToggleUpdateBox() {
+    this.openUpdateBox = !this.openUpdateBox;
+  }
+
   RemoveAddress(addressId: any) {
     this.addressService.DeleteUserAddressById(addressId).subscribe({
       next: (res) => {
@@ -90,8 +106,27 @@ export class AddressComponent implements OnInit{
     
   }
 
-  UpdateAddress() {
+  GetAddressById(addressId: any) {
+    this.addressService.GetUserAddressById(addressId).subscribe(
+      (res) => {
+        if(res.isSuccess) {
+          this.currentAddress = res.response;
+          
+          this.addressUpdateForm = new FormGroup({
+            addressId: new FormControl(res.response.addressId),
+            userId: new FormControl(res.response.userId),
+            title: new FormControl(res.response.title),
+            address: new FormControl(res.response.address,[Validators.required, Validators.minLength(30)]),
+          });
 
+          this.ToggleUpdateBox();
+        }
+      }
+    )
+  }
+
+  UpdateAddress() {
+    console.log(this.addressUpdateForm.value);
   }
 
 
