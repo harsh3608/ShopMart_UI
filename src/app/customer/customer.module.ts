@@ -16,6 +16,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { SellerModule } from '../seller/seller.module';
 import { CartComponent } from './cart/cart.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { AddressComponent } from './address/address.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,15 +26,17 @@ import { FavouritesComponent } from './favourites/favourites.component';
     CustomerHomePageComponent,
     ProductsPoolComponent,
     CartComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,
-}),
+    }),
     MatToolbarModule,
     MatListModule,
     MatMenuModule,

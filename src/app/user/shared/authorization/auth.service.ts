@@ -27,6 +27,12 @@ export class AuthService {
     return dToken;
   }
 
+  getUserId() {
+    const token = this.getToken();
+    const decodedToken = this.jwtHelperService.decodeToken(token);
+    return decodedToken.sub;
+  }
+
   getUserRole() {
     const token = this.getToken();
     const decodedToken = this.jwtHelperService.decodeToken(token);
