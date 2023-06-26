@@ -20,6 +20,7 @@ export class AddressComponent implements OnInit{
   addressUpdateForm!: FormGroup;
   updateRequest!: Address;
   currentAddress!: Address;
+  currentIndex: number = 0;
   
 
   constructor(
@@ -106,11 +107,12 @@ export class AddressComponent implements OnInit{
     
   }
 
-  GetAddressById(addressId: any) {
+  GetAddressById(addressId: any, index: number) {
     this.addressService.GetUserAddressById(addressId).subscribe(
       (res) => {
         if(res.isSuccess) {
           this.currentAddress = res.response;
+          this.currentIndex == index;
           
           this.addressUpdateForm = new FormGroup({
             addressId: new FormControl(res.response.addressId),
@@ -130,10 +132,26 @@ export class AddressComponent implements OnInit{
   }
 
 
+  isCurrentAddress(address: Address): boolean {
+    return this.currentAddress && address.addressId === this.currentAddress.addressId;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   get address(): FormControl {
     return this.addressForm.get("address") as FormControl;
   }
 
 }
+
 
 

@@ -37,7 +37,7 @@
 
 <div *ngIf="addresses.length!=0">
     <div class="container border rounded-3 d-flex flex-column align-items-center bg-white mt-4 p-3"
-        *ngFor="let item of addresses">
+        *ngFor="let item of addresses; let i = index ">
 
         <div class="d-flex flex-row justify-content-center">
 
@@ -47,7 +47,7 @@
 
             &nbsp;&nbsp;
 
-            <button mat-button (click)="GetAddressById(item.addressId)">
+            <button mat-button (click)="GetAddressById(item.addressId, i)">
                 <span class="material-icons text-warning">
                     edit
                 </span>
@@ -69,15 +69,14 @@
 
         </div>
 
-        <form [formGroup]="addressUpdateForm" (ngSubmit)="UpdateAddress()" *ngIf="openUpdateBox"
+        <form [formGroup]="addressUpdateForm" (ngSubmit)="UpdateAddress()" *ngIf="openUpdateBox && i==currentIndex"
             class="container border rounded-3 d-flex flex-column align-items-center bg-white mt-4 p-3">
 
             <h2>Update Address</h2>
 
             <div class="d-flex flex-row w-100">
                 <label>Address:</label>
-                <textarea class="form-control" formControlName="address" class="w-75 mx-2"
-                    style="min-height: 80px;">
+                <textarea class="form-control" formControlName="address" class="w-75 mx-2" style="min-height: 80px;">
                     {{item.address}}
                 </textarea>
 
@@ -94,7 +93,7 @@
             <div class="mt-4">
                 <button type="submit" class="btn btn-success">submit</button>
                 &nbsp;&nbsp;
-                <button type="submit" class="btn btn-warning" (click)="ToggleAddBox()">cancel</button>
+                <button type="submit" class="btn btn-warning">cancel</button>
             </div>
 
         </form>
