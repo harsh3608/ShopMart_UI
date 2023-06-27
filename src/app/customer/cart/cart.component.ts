@@ -132,9 +132,9 @@ export class CartComponent implements OnInit{
                });
              }          
            };
-        }
+        };
       }
-    )
+    );
   }
 
   AddProductToCart(productId: any){
@@ -148,13 +148,11 @@ export class CartComponent implements OnInit{
           this.toastr.success('Product Added to Cart Successfully!', 'Success!',{
             timeOut: 2000,
           });
+          this.GetAllCartProductsCount();
+          this.GetQuantity(productId);
         }
       }
-    );
-    
-    this.GetAllCartProductsCount();
-    
-
+    ); 
   }
 
 
@@ -165,12 +163,11 @@ export class CartComponent implements OnInit{
           this.toastr.warning('Product removed from shopping Cart !', 'Warning!',{
             timeOut: 2000,
           });
+          this.GetAllCartProductsCount();
+          this.GetQuantity(productId);
         }
       }
     );
-    
-    this.GetAllCartProductsCount();
-    this.GetQuantity(productId);
   }
 
   //To remove the product from the cart, whether it has single or multiple units
