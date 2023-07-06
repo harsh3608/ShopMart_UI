@@ -58,50 +58,6 @@ export class ProductsAddComponent implements OnInit{
     }
   }
 
-  // submitAddForm() {
-  //   debugger;
-  //   console.log(this.addProductForm.value);
-  //   this.isLoading = true;
-  //   setTimeout(() => {
-  //     this.addProductForm.markAllAsTouched();
-  //   if (this.addProductForm.valid) {
-  //     this.addProductRequest = this.addProductForm.value;
-  //     this.productService.addProduct(this.addProductRequest).subscribe({
-  //       next: (res)=>{
-  //         if(res.isSuccess){
-            
-  //             this.toastr.success(res.message, 'Success!',{
-  //               timeOut: 2000,
-  //             });
-  //             this.isLoading = false;
-  //             this.router.navigate(['/shop-home']);
-           
-  //         } else if(!res.isSuccess){
-  //           this.isLoading = false;
-  //           this.toastr.error(res.message, 'Failure!',{
-  //             timeOut: 2000,
-  //           });
-            
-  //         }
-  //       }
-  //     })
-  //   }
-  //   }, 1500);
-  // }
-
-
-  // onFileSelected(files: FileList | null) {
-  //   // if (files && files.length > 0) {
-  //   //   this.imageFile = files.item(0);
-  //   // }
-
-  //   if (files && files.length > 0) {
-  //     const file = files.item(0);
-  //     this.addProductForm.patchValue({ ImageFile: file });
-  //   }
-    
-  // }
-
   convertFormDataToObject(formData: FormData): { [key: string]: any } {
     const object: { [key: string]: any } = {};
     formData.forEach((value, key) => {
@@ -142,37 +98,6 @@ export class ProductsAddComponent implements OnInit{
       })
     }
   }
-
-  // onFileSelected(files: FileList | null) {
-  //   if (files && files.length > 0) {
-  //     this.imageFile = files.item(0);
-  //   }
-  // }
-
-
-
-  // get Name(): FormControl {
-  //   return this.addProductForm.get("Name") as FormControl;
-  // }
-  // get Description(): FormControl {
-  //   return this.addProductForm.get("Description") as FormControl;
-  // }
-
-  // get Price(): FormControl {
-  //   return this.addProductForm.get("Price") as FormControl;
-  // }
-
-  // get ProductImage(): FormControl {
-  //   return this.addProductForm.get("ProductImage") as FormControl;
-  // }
-
-  // get CategoryId(): FormControl {
-  //   return this.addProductForm.get("CategoryId") as FormControl;
-  // }
-
-  // get ImageFile(): FormControl {
-  //   return this.addProductForm.get("imageFile") as FormControl;
-  // }
 
 
 }
