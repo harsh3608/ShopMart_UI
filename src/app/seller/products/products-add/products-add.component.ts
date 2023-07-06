@@ -23,6 +23,8 @@ export class ProductsAddComponent implements OnInit{
   Price!: number;
   CategoryId!: string;
 
+  
+
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
@@ -42,6 +44,18 @@ export class ProductsAddComponent implements OnInit{
       CategoryId: new FormControl('', [Validators.required]),
       ImageFile: new FormControl(this.imageFile),
     })
+  }
+
+  onFileChanged(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      //this.labelImport.nativeElement.innerText = file.name;
+      this.addProductForm.patchValue({
+        ImageFile: file,
+        
+      });
+      this.imageFile = file;
+    }
   }
 
   // submitAddForm() {
@@ -88,45 +102,53 @@ export class ProductsAddComponent implements OnInit{
     
   // }
 
+  convertFormDataToObject(formData: FormData): { [key: string]: any } {
+    const object: { [key: string]: any } = {};
+    formData.forEach((value, key) => {
+      object[key] = value;
+    });
+    return object;
+  }
 
   submitAddForm() {
     debugger;
     if (this.imageFile) {
       const formData = new FormData();
-      formData.append('Name', this.Name.valueOf());
-      formData.append('Description', this.Description.valueOf());
-      formData.append('Price', (this.Price).toString().valueOf());
-      formData.append('CategoryId', this.CategoryId.valueOf());
+      formData.append('Name', this.Name);
+      formData.append('Description', this.Description);
+      formData.append('Price', (this.Price).toString());
+      formData.append('CategoryId', this.CategoryId);
       formData.append('ImageFile', this.imageFile);
 
       this.productService.addProduct(formData)
       .subscribe({
-              next: (res)=>{
-                if(res.isSuccess){
-                  
-                    this.toastr.success(res.message, 'Success!',{
-                      timeOut: 2000,
-                    });
-                    this.isLoading = false;
-                    this.router.navigate(['/shop-home']);
-                 
-                } else if(!res.isSuccess){
-                  this.isLoading = false;
-                  this.toastr.error(res.message, 'Failure!',{
-                    timeOut: 2000,
-                  });
-                  
-                }
-              }
-            })
+        next: (res)=>{
+          if(res.isSuccess){
+            
+              this.toastr.success(res.message, 'Success!',{
+                timeOut: 2000,
+              });
+              this.isLoading = false;
+              this.router.navigate(['/shop-home']);
+          
+          } else if(!res.isSuccess){
+            this.isLoading = false;
+            this.toastr.error(res.message, 'Failure!',{
+              timeOut: 2000,
+            });
+            
+          }
+        }
+      })
     }
   }
 
-  onFileSelected(files: FileList | null) {
-    if (files && files.length > 0) {
-      this.imageFile = files.item(0);
-    }
-  }
+  // onFileSelected(files: FileList | null) {
+  //   if (files && files.length > 0) {
+  //     this.imageFile = files.item(0);
+  //   }
+  // }
+
 
 
   // get Name(): FormControl {
@@ -149,7 +171,7 @@ export class ProductsAddComponent implements OnInit{
   // }
 
   // get ImageFile(): FormControl {
-  //   return this.addProductForm.get("ImageFile") as FormControl;
+  //   return this.addProductForm.get("imageFile") as FormControl;
   // }
 
 

@@ -58,10 +58,19 @@
                 </div>
             </div>
 
+
+
             <div class="row">
                 <div class="col">
-                    <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
-                    <input type="file" class="file-input"  (change)="onFileSelected($any($event.target).files)">                  
+                    <div class="container border p-2 w-25">
+                        <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile"
+                                (change)="onFileChanged($event)"
+                                accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -95,9 +104,7 @@
                     <mat-form-field>
                         <mat-label>Enter product name</mat-label>
                         <input matInput [(ngModel)]="Name" name="Name">
-                        <!-- <mat-error *ngIf="Name.touched && Name.invalid">
-                            <span *ngIf="Name.errors?.['required']">Product name is required.</span>
-                        </mat-error> -->
+                        
                     </mat-form-field>
                 </div>
 
@@ -105,9 +112,7 @@
                     <mat-form-field>
                         <mat-label>Enter product price</mat-label>
                         <input matInput [(ngModel)]="Price" name="Price">
-                        <!-- <mat-error *ngIf="Price.touched && Price.invalid">
-                            <span *ngIf="Price.errors?.['required']">Product price is required.</span>
-                        </mat-error> -->
+                        
                     </mat-form-field>
                 </div>
 
@@ -119,9 +124,7 @@
                                 {{option.categoryName}}
                             </mat-option>
                         </mat-select>
-                        <!-- <mat-error *ngIf="CategoryId.touched && CategoryId.invalid">
-                            <span *ngIf="CategoryId.errors?.['required']">Category is required.</span>
-                        </mat-error> -->
+                        
                     </mat-form-field>
                 </div>
 
@@ -132,17 +135,21 @@
                     <mat-form-field>
                         <mat-label>Enter product description</mat-label>
                         <input matInput [(ngModel)]="Description" name="Description">
-                        <!-- <mat-error *ngIf="Description.touched && Description.invalid">
-                            <span *ngIf="Description.errors?.['required']">Description is required.</span>
-                        </mat-error> -->
+                        
                     </mat-form-field>
                 </div>
             </div>
 
+
+
             <div class="row">
                 <div class="col">
                     <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
-                    <input type="file" class="file-input"  (change)="onFileSelected($any($event.target).files)">                  
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)"
+                            accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
+                        <label class="custom-file-label" #labelImport for="customFile">Choose file</label>
+                    </div>
                 </div>
             </div>
 

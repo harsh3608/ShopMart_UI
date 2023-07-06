@@ -11,9 +11,10 @@ export class ProductService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
-  addProduct(product:any): Observable<ProductReturnResponse>{
-    return this.http.post<ProductReturnResponse>(this.productBaseServerLink+'AddProduct', product, { headers: this.headers });
+  addProduct(product:FormData): Observable<ProductReturnResponse>{
+    return this.http.post<ProductReturnResponse>(this.productBaseServerLink+'AddProduct', product, { headers: new HttpHeaders().set("Accept", "multipart/form-data") });
   }
+
 
   getAllProducts(): Observable<GetProductsResponse> {
     return this.http.get<GetProductsResponse>(this.productBaseServerLink+'GetAllProducts', { headers: this.headers })
