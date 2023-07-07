@@ -17,6 +17,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductsAddComponent } from './products/products-add/products-add.component';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { TableModule } from "primeng/table";
+import { InputTextModule } from "primeng/inputtext";
+import { ButtonModule } from "primeng/button";
+import { DropdownModule } from "primeng/dropdown";
+import { PaginatorModule } from "primeng/paginator";
+import { TooltipModule } from "primeng/tooltip";
 
 
 @NgModule({
@@ -41,7 +48,15 @@ import { ProductsAddComponent } from './products/products-add/products-add.compo
     ToastrModule.forRoot(),
     MatToolbarModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    TableModule,
+    MatProgressSpinnerModule,
+    InputTextModule,
+    ButtonModule,
+    DropdownModule,
+    PaginatorModule,
+    TooltipModule
+    
   ],
 })
 export class SellerModule { }

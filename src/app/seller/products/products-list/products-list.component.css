@@ -1,0 +1,45 @@
+td {
+    font-size: medium;
+  }
+  
+  th {
+    font-size: small;
+  }
+  
+  .table-header {
+    font-size: small;
+  }
+  
+  filter {
+    height: 10px;
+  }
+  
+  span {
+    font-size: 34px;
+  }
+  
+  p {
+    width: 300px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .spinner {
+    padding: 20%;
+    padding-left: 44%;
+  }
+  
+  .action {
+    padding-left: 30%;
+    display: flex;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+
+  img{
+    width: 100px;
+    height: 100px;
+  }
