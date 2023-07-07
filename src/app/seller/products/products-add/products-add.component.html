@@ -43,23 +43,27 @@
 
             <div class="row">
                 <div class="col">
-                    <mat-form-field>
+                    <mat-form-field style="width: 500px">
                         <mat-label>Enter product description</mat-label>
-                        <input matInput [(ngModel)]="Description" name="Description">
-
+                        <textarea matInput [(ngModel)]="Description" name="Description">
+                        </textarea>
                     </mat-form-field>
+                </div>
+
+                <div class="col-5">
+                    <div class="container border p-2" style="width: 300px;">
+                        <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile"
+                                (change)="onFileChanged($event)"
+                                accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col">
-                    <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)"
-                            accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
-                        <label class="custom-file-label" #labelImport for="customFile">Choose file</label>
-                    </div>
-                </div>
+                
             </div>
 
             <div class="buttons mt-3 mb-2">
