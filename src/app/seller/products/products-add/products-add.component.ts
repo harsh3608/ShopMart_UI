@@ -17,13 +17,10 @@ export class ProductsAddComponent implements OnInit{
   addProductRequest!: AddProduct;
   imageFile: File | null = null;
   categories: Category[] = [];
-
   Name!: string;
   Description!: string;
   Price!: number;
   CategoryId!: string;
-
-  
 
   constructor(
     private productService: ProductService,
@@ -99,5 +96,5 @@ export class ProductsAddComponent implements OnInit{
     }
   }
 
-
+  
 }

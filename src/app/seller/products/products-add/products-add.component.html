@@ -1,7 +1,7 @@
 <app-seller-menu></app-seller-menu>
 
 <div class="container border p-3 rounded-3">
-    
+
     <form #addProductForm="ngForm" (ngSubmit)="submitAddForm()">
         <div class="row g-0">
 
@@ -15,7 +15,7 @@
                     <mat-form-field>
                         <mat-label>Enter product name</mat-label>
                         <input matInput [(ngModel)]="Name" name="Name">
-                        
+
                     </mat-form-field>
                 </div>
 
@@ -23,7 +23,7 @@
                     <mat-form-field>
                         <mat-label>Enter product price</mat-label>
                         <input matInput [(ngModel)]="Price" name="Price">
-                        
+
                     </mat-form-field>
                 </div>
 
@@ -35,7 +35,7 @@
                                 {{option.categoryName}}
                             </mat-option>
                         </mat-select>
-                        
+
                     </mat-form-field>
                 </div>
 
@@ -43,28 +43,28 @@
 
             <div class="row">
                 <div class="col">
-                    <mat-form-field>
+                    <mat-form-field style="width: 500px">
                         <mat-label>Enter product description</mat-label>
-                        <input matInput [(ngModel)]="Description" name="Description">
-                        
+                        <textarea matInput [(ngModel)]="Description" name="Description">
+                        </textarea>
                     </mat-form-field>
                 </div>
-            </div>
 
-
-
-            <div class="row">
-                <div class="col">
-                    <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)"
-                            accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
-                        <label class="custom-file-label" #labelImport for="customFile">Choose file</label>
+                <div class="col-5">
+                    <div class="container border p-2" style="width: 300px;">
+                        <mat-label>Enter product image:</mat-label>&nbsp;&nbsp;
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile"
+                                (change)="onFileChanged($event)"
+                                accept=".jpg,.png,.gif,.pdf,.xls,.xlsx,.doc,.docx,.ppt,.pptx">
+                        </div>
                     </div>
                 </div>
             </div>
 
-
+            <div class="row">
+                
+            </div>
 
             <div class="buttons mt-3 mb-2">
                 <div class="mt-2">

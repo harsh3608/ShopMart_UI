@@ -1,2 +1,113 @@
 <app-seller-menu></app-seller-menu>
-<p>products-list works!</p>
+
+
+<ng-container *ngIf="isLoading">
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-container>
+
+<div class="card pl-5" *ngIf="!isLoading">
+
+    <p-table #dt [value]="products" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,50]" [rows]="10"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [loading]="loading"
+        [paginator]="true" [filterDelay]="0" [reorderableColumns]="true" 
+        [globalFilterFields]="['name', 'description', 'price', 'Category']">
+
+        <ng-template pTemplate="caption">
+            <div class="row table-header" style="display: flex; justify-content: space-between;">
+                <div class="col" style="margin-top: 0.5%;">
+                    <span>Manage Products</span>
+                </div>
+                <div class="col action ">
+                    <p-button icon="pi pi-plus" pTooltip="Add Product" tooltipPosition="bottom"
+                        routerLink="/products-add" label="Add"></p-button>
+
+                    <span class="p-input-icon-left ms-4">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" id="search"
+                            (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+
+                    <button pButton label="Clear" class="p-button-outlined ms-4" icon="pi pi-filter-slash"
+                        (click)="clear(dt)"></button>
+                </div>
+
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th >Image
+                </th>
+                <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon>
+                </th>
+                <th pSortableColumn="categoryId">Category<p-sortIcon field="categoryId"></p-sortIcon>
+                </th>
+                <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon>
+                </th>
+                <th>Action</th>
+            </tr>
+            <tr class="filter">
+                
+                <th>
+                    <p-columnFilter type="text" field="technology"></p-columnFilter>
+                </th>
+                <th style="width: 200px;">
+                    
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="experienceLevel"></p-columnFilter>
+                </th>
+                
+                <th>
+                    <p-columnFilter type="text" field="active"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="createdOn"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.name}}</td>
+                <td>
+                    <img src="{{imageBaseLink+product.productImage}}" />
+                </td>
+                <td>
+                    <p>{{product.description}}</p>
+                </td>
+                <td>{{ GetCategoryById(product.categoryId) }}</td>
+                <td>{{product.price | currency:'INR'}}</td>
+
+                <td>
+                    <button pTooltip="Delete Product" tooltipPosition="left" type="button" class="btn btn-danger mt-2 "
+                        [routerLink]="['/questions-update/',product.id]" >
+
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+
+                    <!-- <button pTooltip="Update Question" tooltipPosition="left" type="submit" class="btn btn-warning mt-2 "
+                  [routerLink]="['/questions-update/',product.id]">
+                  <i class="fa fa-pencil-square-o " style="scale: 2.0;"></i>
+                </button> -->
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No questions found.</td>
+            </tr>
+        </ng-template>
+
+
+    </p-table>
+
+</div>
