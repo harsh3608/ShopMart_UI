@@ -15,7 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ]
 })
 export class HomeModule { }
